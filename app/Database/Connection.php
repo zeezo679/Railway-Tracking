@@ -13,7 +13,7 @@ class Connection
 
     private function __construct()
     {
-        $this->connection = new \mysqli("localhost", "root", "", "tsystem");
+        $this->connection = new \mysqli("localhost", "root", "", "Railway");
 
         if ($this->connection->connect_error) {
             die("Database connection failed: " . $this->connection->connect_error);
