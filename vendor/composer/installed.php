@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'ziada/mvc',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => 'c16ffb4f96ac5fbc7a8c7cf10a759aed65c47394',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -65,9 +65,9 @@
             'dev_requirement' => false,
         ),
         'ziada/mvc' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => 'c16ffb4f96ac5fbc7a8c7cf10a759aed65c47394',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
