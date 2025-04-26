@@ -1,6 +1,7 @@
 <?php
 namespace App\Database;
 use App\Database\Connection;
+
 interface dbContract{
   public function insert($data);
   public function select($columns="*");
@@ -12,9 +13,9 @@ interface dbContract{
   public function excute();
   public function fetchAll();
 }
+
 class DB implements dbContract{
   private $table;
-
   private $sql;
   private $conn;
   
