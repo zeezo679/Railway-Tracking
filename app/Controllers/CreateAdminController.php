@@ -3,7 +3,6 @@ namespace App\Controllers;
 
 use Ziada\Mvc\Controllers\AbstractContoller;
 use App\Models\User;
-use Ziada\Mvc\Http\Response;
 
 class CreateAdminController extends AbstractContoller
 {

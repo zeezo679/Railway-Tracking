@@ -9,7 +9,7 @@ class AdminController extends AbstractContoller
 {
     public function showAdminDashboard()
     {
-        return $this->render('admin');
+        return $this->render('adminDashboard');
     }
         
 }

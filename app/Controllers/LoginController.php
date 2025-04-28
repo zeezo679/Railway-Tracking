@@ -7,13 +7,18 @@ class LoginController extends AbstractContoller
 {
     public function showLogin()
     {
-        return $this->render('login');
+        return $this->render('login',['errors'=>null,'old'=>[]]);
     }
     public function loginAction()
     {
       if(isset($_POST["email"]) && isset($_POST["password"])){
         $checkEmail = $_POST["email"];
         $checkPassword = $_POST["password"];
+        $errors="";
+        if(empty($checkEmail) || empty ($checkPassword)){
+          $errors="Please Enter your E-mail and Password";
+          return $this->render("login",['errors' => $errors, 'old' => $_POST]);
+        }
         $user = new User();
         $trustData = $user->getUserInfo($checkEmail);
         // ? compare if trust open session and move to home
@@ -31,8 +36,9 @@ class LoginController extends AbstractContoller
             exit();
           }
           
-      }
-      return $this->render('login');
+        }
+          $errors="Invalid Email OR Invalid Password";
+          return $this->render("login",['errors' => $errors, 'old' => $_POST]);
     }
   }
 }
