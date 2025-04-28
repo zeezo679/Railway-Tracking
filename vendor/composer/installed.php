@@ -3,7 +3,7 @@
         'name' => 'ziada/mvc',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'c16ffb4f96ac5fbc7a8c7cf10a759aed65c47394',
+        'reference' => '0f68b05d918e171905b30bbac906eb55b282dc6f',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -67,7 +67,7 @@
         'ziada/mvc' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'c16ffb4f96ac5fbc7a8c7cf10a759aed65c47394',
+            'reference' => '0f68b05d918e171905b30bbac906eb55b282dc6f',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
