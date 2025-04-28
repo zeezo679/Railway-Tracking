@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/register.css">
+    <link rel="stylesheet" href="/assets/css/register.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   </head>
   <body class="d-flex flex-column min-vh-100">
@@ -26,23 +26,39 @@
               <!-- 2 column grid layout with text inputs for the first and last names -->
                 <div data-mdb-input-init class="d-flex align-items-center gap-3 form-outline mb-4">
                     <label class="form-label w-25 fw-bold" for="form3Example1">First-Name</label>
-                    <input name="fName" placeholder="ex : user1" required type="text" id="form3Example1" class="form-control w-75" />
+                    <input name="fName" placeholder="ex : user1" type="text" id="form3Example1" class="form-control w-75" 
+                    value="<?= isset($old['fName']) ? htmlspecialchars($old['fName']) : '' ?>"
+                    />
                 </div>
                 <div data-mdb-input-init class="d-flex align-items-center gap-3 form-outline mb-4">
                   <label class="form-label w-25 fw-bold" for="form3Example2">Last-Name</label>
-                  <input name="sName" placeholder="ex : user2" required type="text" id="form3Example2" class="form-control w-75" />
+                  <input name="sName" placeholder="ex : user2"  type="text" id="form3Example2" class="form-control w-75" 
+                  value="<?= isset($old['lName']) ? htmlspecialchars($old['lName']) : '' ?>"
+                  />
                 </div>
 
               <!-- Email input -->
               <div data-mdb-input-init class="form-outline d-flex gap-3 align-items-center mb-4">
                 <label class="form-label fw-bold w-25" for="form3Example3">Email-Address</label>
-                <input name="email" required placeholder="ex : user@gmail.com" type="email" id="form3Example3" class="form-control w-75" />
+                <input name="email"  placeholder="ex : user@gmail.com" type="email" id="form3Example3" class="form-control w-75" 
+                value="<?= isset($old['email']) ? htmlspecialchars($old['email']) : '' ?>"
+                />
               </div>
 
               <!-- Password input -->
               <div data-mdb-input-init class="form-outline d-flex align-items-center gap-3 mb-4">
                 <label class="form-label fw-bold w-25" for="form3Example4">Password</label>
-                <input name="password" required placeholder="ex : ********" type="password" id="form3Example4" class="form-control w-75" />
+                <input name="password"  placeholder="ex : ********" type="password" id="form3Example4" class="form-control w-75" 
+                value="<?= isset($old['password']) ? htmlspecialchars($old['password']) : '' ?>"
+                />
+              </div>
+
+              <div>
+                <?php if (!empty($errors)): ?>
+                  <?php foreach ($errors as $error): ?>
+                    <p class="error-message" ><?= $error ?><p>
+                  <?php endforeach; ?>
+                <?php endif; ?>
               </div>
 
               <!-- Checkbox -->

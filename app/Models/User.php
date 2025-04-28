@@ -7,7 +7,7 @@ use App\Database\DB;
 class User
 {
     protected $db;
-    private $table = "users";
+    protected $table = "users";
 
     public function __construct()
     {

@@ -20,8 +20,17 @@ class LoginController extends AbstractContoller
         if ($trustData && password_verify($checkPassword, $trustData['password'])) {
           session_start();
           $_SESSION['user'] = $trustData;
-          header('Location: home');
-          exit();
+          
+          if($trustData['role'] === 'admin')
+          {
+            header('Location: admin');
+            exit();
+          }
+          else{
+            header('Location: home');
+            exit();
+          }
+          
       }
       return $this->render('login');
     }

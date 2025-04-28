@@ -19,7 +19,6 @@ class UserController
     }
     public function getUserInfo()
     {
-      echo "from user controller";
         return $this->userModel->getUserInfo($this->email,$this->password);
     }
 }
