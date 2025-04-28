@@ -8,6 +8,7 @@ return [
    //routes will be entered here
    ['GET', '/', [HomeController::class, 'index']],
    ['GET', '/login', [LoginController::class, 'showLogin']] ,
-   ['GET', '/register', [RegisterController::class, 'showRegister']] 
+   ['GET', '/register', [RegisterController::class, 'showRegister']],
+  //  ['GET', '/home', [HomeController::class, 'index']]
 ];
 

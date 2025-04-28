@@ -8,11 +8,13 @@ use Ziada\Mvc\Http\Response;
 
 abstract class AbstractContoller
 {
+  // ? store GET POST Methods
+
     protected ?Request $request = null;
     
     public function render(string $view, ?array $vars = []) : Response
     {
-        // Extract variables to make them available in the view
+        // Extract array key to make them available in the view
         extract($vars);
         
         // Start output buffering
