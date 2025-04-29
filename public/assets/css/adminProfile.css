@@ -1,0 +1,21 @@
+
+  body {
+    background: #f7f7f7;
+  }
+  .bg-white {
+    background: #fff;
+  }
+  .labels {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 0;
+  }
+  .profile-button {
+    background: #007bff;
+    border: none;
+    border-radius: 5px;
+  }
+  .add-experience {
+    cursor: pointer;
+    border-radius: 5px;
+  }
