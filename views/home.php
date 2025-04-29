@@ -101,11 +101,11 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
                         <a href="index.html" class="nav-item nav-link active">Home</a>
-                        <a href="about.html" class="nav-item nav-link">About</a>
-                        <a href="services.html" class="nav-item nav-link">Services</a>
+                        <a href="booking.html" class="nav-item nav-link">Book Now   </a>
+                        <!-- <a href="services.html" class="nav-item nav-link">Services</a>
                         <a href="packages.html" class="nav-item nav-link">Packages</a>
-                        <a href="blog.html" class="nav-item nav-link">Blog</a>
-                        <div class="nav-item dropdown">
+                        <a href="blog.html" class="nav-item nav-link">Blog</a> -->
+                        <!-- <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                             <div class="dropdown-menu m-0">
                                 <a href="destination.html" class="dropdown-item">Destination</a>
@@ -117,7 +117,7 @@
                                 <a href="404.html" class="dropdown-item">404 Page</a>
                             </div>
                         </div>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
+                        <a href="contact.html" class="nav-item nav-link">Contact</a> -->
                     </div>
                     <a href="/logout" class="btn btn-danger rounded-pill py-2 px-4 ms-lg-4">Log Out</a>
                 </div>
