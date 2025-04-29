@@ -26,4 +26,12 @@ class User
       ->getRow();
       return $userInfo;
     }
+
+    public function UpdatePassword($email, $hashedPassword)
+    {
+      $this->db->update([
+        'password' => $hashedPassword
+        ])->where('email', '=', $email)
+        ->excute();
+    }
 }

@@ -11,6 +11,8 @@ use App\Controllers\AdminProfileController;
 use App\Controllers\AdminStationsController;
 use App\Controllers\AdminTrainsController;
 use App\Controllers\AdminUsersController;
+use App\Controllers\Render;
+use App\Controllers\ResetPasswordController;
 
 return [
   // ? GET from url normal navigate
@@ -31,6 +33,10 @@ return [
   ['POST','/register', [RegisterController::class, 'registerAction']],
   ['POST','/create', [CreateAdminController::class, 'createAdminAction']],
   ['POST','/admin_Profile', [AdminProfileController::class, 'saveProfileInformation']],
+  ['GET','/forgotPass', [Render::class, 'ShowForgotPassword']],
+  ['POST','/forgotPass', [ResetPasswordController::class, 'HandlePassword']],
+  ['GET', '/reset', [Render::class, 'ShowResetPassword']],
+  ['POST', '/reset', [ResetPasswordController::class, 'HandleReset']],
 ];
 
 

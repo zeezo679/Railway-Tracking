@@ -29,7 +29,7 @@
                     </div>
                     
                     <div data-mdb-input-init class="form-outline justify-content-between align-items-center d-flex mb-4">
-                      <label class="form-label fw-700 w-25" for="form4Example1cg">Admin Last Name</label>
+                      <label class="form-label fw-700 w -25" for="form4Example1cg">Admin Last Name</label>
                       <input name="lname" type="text" placeholder="Enter Last Name" id="form4Example1cg" class="form-control w-75 form-control-lg" />
                     </div>
 

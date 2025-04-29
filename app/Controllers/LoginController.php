@@ -11,10 +11,10 @@ class LoginController extends AbstractContoller
     }
     public function loginAction()
     {
+      $errors="";
       if(isset($_POST["email"]) && isset($_POST["password"])){
         $checkEmail = $_POST["email"];
         $checkPassword = $_POST["password"];
-        $errors="";
         if(empty($checkEmail) || empty ($checkPassword)){
           $errors="Please Enter your E-mail and Password";
           return $this->render("login",['errors' => $errors, 'old' => $_POST]);
@@ -40,5 +40,6 @@ class LoginController extends AbstractContoller
           $errors="Invalid Email OR Invalid Password";
           return $this->render("login",['errors' => $errors, 'old' => $_POST]);
     }
+    return $this->render("login",['errors' => $errors, 'old' => $_POST]);
   }
 }
