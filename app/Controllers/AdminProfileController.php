@@ -1,6 +1,5 @@
 <?php
 namespace App\Controllers;
-session_start(); 
 
 use Ziada\Mvc\Controllers\AbstractContoller;
 
@@ -8,7 +7,11 @@ class AdminProfileController extends AbstractContoller
 {
     public function showAdminProfile()
     {
-        return $this->render('adminProfile');
+        $check = $this->checkAdminLogin();
+        if($check===true){
+          return $this->render('adminProfile');
+        }
+        return $check;
     }
 
     public function saveProfileInformation(){

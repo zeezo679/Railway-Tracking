@@ -38,6 +38,7 @@ class DB implements dbContract{
     $values = rtrim($values,",");
     $this->sql="INSERT INTO `$this->table` ($columns) VALUES ($values)";
     // ? return this to make the excution
+    echo "<pre>$this->sql</pre>";
     return $this;
   }
   public function select($columns="*"){
@@ -56,8 +57,11 @@ class DB implements dbContract{
       }
     }
     $rows = rtrim($rows,",");
+    // echo "<pre>";
+    // print_r($rows);
+    // echo "</pre>";
     $this->sql="UPDATE $this->table SET $rows";
-    // ? return this to make the excution
+    // // ? return this to make the excution
     return $this;
   }
   public function delete(){
@@ -74,7 +78,7 @@ class DB implements dbContract{
     return $this;
   }
   public function excute(){
-    // echo "<br/>".$this->sql."<br/>";
+    echo "<br/>".$this->sql."<br/>";
     if(!mysqli_query($this->conn,$this->sql)){
       die("Failed to excute the query" . mysqli_error($this->conn));
     };

@@ -65,7 +65,14 @@ class Kernel
                     throw new \RuntimeException("Method {$method} does not exist in controller {$controllerClass}");
                 }
                 
-                return call_user_func_array([$controller, $method], $vars);
+                $response = call_user_func_array([$controller, $method], array_values($vars));
+
+                if (!$response instanceof Response) {
+                    throw new \RuntimeException("Controller method {$controllerClass}::{$method} did not return a Response");
+                }
+
+                return $response;
+
         }
         
         throw new \RuntimeException('Unexpected route dispatch result');

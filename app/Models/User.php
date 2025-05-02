@@ -21,17 +21,29 @@ class User
       }
     }
     public function getUserInfo($email){
-      $userInfo = $this->db->select()
-      ->where("email","=",$email)
-      ->getRow();
-      return $userInfo;
+      try{
+        $userInfo = $this->db->select()
+        ->where("email","=",$email)
+        ->getRow();
+        return $userInfo;
+      }catch(\Exception $e){
+        // echo "Error: " . $e->getMessage();
+        return null;
+      }
     }
 
     public function UpdatePassword($email, $hashedPassword)
     {
-      $this->db->update([
-        'password' => $hashedPassword
-        ])->where('email', '=', $email)
-        ->excute();
+      try{
+        $this->db->update([
+          'password' => $hashedPassword
+          ])->where('email', '=', $email)
+          ->excute();
+      }catch(\Exception $e){
+        echo "Error: " . $e->getMessage();
+      }
     }
+
+
+    
 }

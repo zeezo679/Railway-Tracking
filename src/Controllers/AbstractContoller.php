@@ -8,6 +8,7 @@ use Ziada\Mvc\Http\Response;
 
 abstract class AbstractContoller
 {
+
   // ? store GET POST Methods
 
     protected ?Request $request = null;
@@ -33,5 +34,21 @@ abstract class AbstractContoller
     public function setRequest(Request $request)
     {
         $this->request = $request;
+    }
+
+    public function checkUserLogin(){
+      session_start();
+      if(!isset($_SESSION['user']['email'])){
+        return $this->render('login',['errors'=>null,'old'=>[]]);   
+      }
+      return true;
+    }
+
+    public function checkAdminLogin(){
+      session_start();
+      if (!isset($_SESSION['user']['role']) || $_SESSION['user']['role'] !== "admin") {
+        return $this->render('login', ['errors' => null, 'old' => []]);
+    }    
+      return true;
     }
 }
