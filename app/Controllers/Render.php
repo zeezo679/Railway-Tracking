@@ -14,26 +14,30 @@ class Render extends AbstractContoller
     if( $check === true){
       return $this->render('adminDashboard');
     }
-    return $check;
+    return $this->render('home');
   }
   public function index()
     {
-      $check = $this->checkAdminLogin(); 
+      $check = $this->checkUserLogin(); 
       if( $check === true){
         return $this->render('home');
       }
-      return $check;
+      return $this->render('home');
     }
     public function ShowForgotPassword()
     {
         return $this->render('forgotPassword');
     }   
     
-    
     public function ShowResetPassword()
     {
         return $this->render('resetPassword');
-    }    
+    }   
+    
+    public function ShowBooking()
+    {
+        return $this->render('booking');
+    }
 }
 ?>
 

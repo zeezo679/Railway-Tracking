@@ -12,8 +12,10 @@ use App\Controllers\ResetPasswordController;
 return [
   // ? GET from url normal navigate
   // ? POST from forms
-  ['GET', '/', [Render::class, 'index']],
+  ['GET', '/home', [Render::class, 'index']],
+
   
+  ['GET', '/', [LoginController::class, 'showLogin']],
   ['GET', '/login', [LoginController::class, 'showLogin']],
   ['POST','/login', [LoginController::class, 'loginAction']],  
   ['GET', '/logout', [LogOutController::class, 'logoutAction']],
@@ -39,6 +41,9 @@ return [
   
   ['GET', '/reset', [Render::class, 'ShowResetPassword']],
   ['POST', '/reset', [ResetPasswordController::class, 'HandleReset']],
+
+  ['GET', '/book', [Render::class, 'ShowBooking']],
+
 ];
 
 

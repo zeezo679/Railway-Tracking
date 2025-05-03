@@ -1,0 +1,21 @@
+
+  
+  .num-passengers {
+    width: 120px !important;
+    padding: 8px 12px;
+    border: 2px solid #4B99AD;
+    border-radius: 6px;
+    font-size: 1.1em;
+    background: #f9fcff;
+    color: #222;
+    box-shadow: 0 1px 4px rgba(75,153,173,0.08);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+  }
+  
+  .num-passengers:focus {
+    border-color: #1e5f74;
+    box-shadow: 0 0 0 2px #b7e3f6;
+    background: #fff;
+  }
+  
