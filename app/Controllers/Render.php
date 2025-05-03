@@ -34,10 +34,6 @@ class Render extends AbstractContoller
         return $this->render('resetPassword');
     }   
     
-    public function ShowBooking()
-    {
-        return $this->render('booking');
-    }
 }
 ?>
 

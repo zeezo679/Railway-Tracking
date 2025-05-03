@@ -19,3 +19,25 @@
     background: #fff;
   }
   
+  .modern-black-submit {
+    background: #111;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 14px 40px;
+    font-size: 1.1em;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  }
+  
+  .modern-black-submit:hover,
+  .modern-black-submit:focus {
+    background: #222;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+    transform: translateY(-2px) scale(1.03);
+    outline: none;
+  }
+  

@@ -1,0 +1,21 @@
+<?php
+namespace App\Controllers;
+
+use Ziada\Mvc\Controllers\AbstractContoller;
+use App\Models\User;
+
+class BookingController extends AbstractContoller
+{
+    public function ShowBooking()
+    {
+        return $this->render('booking');
+    }
+
+    public function ShowSelectTrains()
+    {
+        return $this->render('select_train');
+    }
+}
+?>
+
+

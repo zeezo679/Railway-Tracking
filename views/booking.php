@@ -24,7 +24,7 @@ $stations = $db->select()->fetchAll();
  
 </style>
 
-<form method="POST" action="\bookticket"><input type="hidden" name="formID" value="251186963664569" /><input type="hidden" id="JWTContainer" value="" /><input type="hidden" id="cardinalOrderNumber" value="" /><input type="hidden" id="jsExecutionTracker" name="jsExecutionTracker" value="build-date-1746226345261" /><input type="hidden" id="submitSource" name="submitSource" value="unknown" /><input type="hidden" id="buildDate" name="buildDate" value="1746226345261" /><input type="hidden" name="uploadServerUrl" value="https://upload.jotform.com/upload" /><input type="hidden" name="eventObserver" value="1" />
+<form method="POST" action="/selecttrain"><input type="hidden" name="formID" value="251186963664569" /><input type="hidden" id="JWTContainer" value="" /><input type="hidden" id="cardinalOrderNumber" value="" /><input type="hidden" id="jsExecutionTracker" name="jsExecutionTracker" value="build-date-1746226345261" /><input type="hidden" id="submitSource" name="submitSource" value="unknown" /><input type="hidden" id="buildDate" name="buildDate" value="1746226345261" /><input type="hidden" name="uploadServerUrl" value="https://upload.jotform.com/upload" /><input type="hidden" name="eventObserver" value="1" />
   <div role="main" class="form-all">
     <ul class="form-section page-section" role="presentation">
       <li id="cid_50" class="form-input-wide" data-type="control_head">
@@ -98,7 +98,12 @@ $stations = $db->select()->fetchAll();
       <li class="form-line" id="passenger_fields_container">
        <!-- Passenger fields will be generated here -->
       </li>
-     
+      <li class="form-line" id="passenger_fields_container">
+      <button id="input_1" type="submit" class="modern-black-submit">
+        Submit
+      </button>
+      </li>
+        
       <li style="clear:both"></li>
       <li style="display:none">Should be Empty: <input type="text" name="website" value="" type="hidden" /></li>
     </ul>

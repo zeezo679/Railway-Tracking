@@ -6,6 +6,7 @@ use App\Controllers\RegisterController;
 use App\Controllers\CreateAdminController;
 use App\Controllers\AdminProfileController;
 use App\Controllers\AdminUsersController;
+use App\Controllers\BookingController;
 use App\Controllers\Render;
 use App\Controllers\ResetPasswordController;
 
@@ -42,8 +43,7 @@ return [
   ['GET', '/reset', [Render::class, 'ShowResetPassword']],
   ['POST', '/reset', [ResetPasswordController::class, 'HandleReset']],
 
-  ['GET', '/book', [Render::class, 'ShowBooking']],
-
+  ['GET', '/book', [BookingController::class, 'ShowBooking']],
 ];
 
 
