@@ -192,7 +192,7 @@
                           data-bs-target="#editUserModal">
                           Edit
                         </a>
-                          <a href="deleteUser/?id=<?= $user['id'] ?>" 
+                          <a href="/delete/users/?id=<?= $user['id'] ?>" 
                             class="text-danger font-weight-bold text-s" 
                             data-toggle="tooltip" 
                             title="Delete user">
@@ -225,6 +225,8 @@
               <div class="d-flex justify-content-between align-item-center">
       
                 <input type="hidden" id="modal-user-id" name="id" value="">
+                <!-- table name -->
+                <input type="hidden" id="tableName" name="table" value="users">
 
                 <div class="form-outline mb-3">
                   <label class="form-label" for="first_name">First Name</label>
@@ -275,74 +277,76 @@
       </div>
     </div>
 
-<!-- Add Modal -->
-<div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
-  <div class="modal-dialog d-flex justify-content-center">
-    <div class="modal-content w-100">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel1">Add User</h5>
-        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body p-4">
-        <form method="POST" action="addUser">
-          
-          <div class="d-flex justify-content-between align-item-center">
-  
-            <input type="hidden" id="add-modal-user-id" name="id" value="">
-
-            <div class="form-outline mb-3">
-              <label class="form-label" for="first_name">First Name</label>
-              <input type="text" placeholder="Enter First Name" value="" id="add-modal-firstname" name="firstName" class="form-control" required />
-            </div>
-            
-            <div class="form-outline mb-3">
-              <label class="form-label" for="last_name">Last Name</label>
-              <input type="text" placeholder="Enter Last Name" value="" id="add-modal-lastname" name="lastName" class="form-control" required />
-            </div>
-            
+    <!-- Add Modal -->
+    <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+      <div class="modal-dialog d-flex justify-content-center">
+        <div class="modal-content w-100">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel1">Add User</h5>
+            <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
           </div>
+          <div class="modal-body p-4">
+            <form method="POST" action="addUser">
+              
+              <div class="d-flex justify-content-between align-item-center">
+      
+                <input type="hidden" id="add-modal-user-id" name="id" value="">
+                <!-- table name -->
+                <input type="hidden" name="table" value="users">
 
-          <div class="form-outline mb-3">
-            <label class="form-label" for="email">Email</label>
-            <input type="email" placeholder="Enter Email" value="" id="add-modal-email" name="email" class="form-control" required />
-          </div>
+                <div class="form-outline mb-3">
+                  <label class="form-label" for="first_name">First Name</label>
+                  <input type="text" placeholder="Enter First Name" value="" id="add-modal-firstname" name="firstName" class="form-control" required />
+                </div>
+                
+                <div class="form-outline mb-3">
+                  <label class="form-label" for="last_name">Last Name</label>
+                  <input type="text" placeholder="Enter Last Name" value="" id="add-modal-lastname" name="lastName" class="form-control" required />
+                </div>
+                
+              </div>
 
-          <div class="form-outline mb-3">
-            <label class="form-label" for="password">Password</label>
-            <input type="password" placeholder="********" value="" id="add-modal-password" name="password" class="form-control" required />
-          </div>
+              <div class="form-outline mb-3">
+                <label class="form-label" for="email">Email</label>
+                <input type="email" placeholder="Enter Email" value="" id="add-modal-email" name="email" class="form-control" required />
+              </div>
 
-          <div class="form-outline mb-3">
-            <label class="form-label d-block mt-1" for="role">Role</label>
-            <select class="form-select" id="add-modal-role" name="role" required>
-              <option value="admin">Admin</option>
-              <option value="user" selected >User</option>
-              <option value="station_master">Station_Master</option>
-            </select>
-          </div>
+              <div class="form-outline mb-3">
+                <label class="form-label" for="password">Password</label>
+                <input type="password" placeholder="********" value="" id="add-modal-password" name="password" class="form-control" required />
+              </div>
 
-          <div class="form-outline mb-3">
-            <label class="form-label d-block mt-1" for="status">Account Status</label>
-            <select  class="form-select" id="add-modal-status" name="account_Status" required>
-              <option value="Active">Active</option>
-              <option value="Suspended" selected>Suspended</option>
-            </select>
-          </div>
+              <div class="form-outline mb-3">
+                <label class="form-label d-block mt-1" for="role">Role</label>
+                <select class="form-select" id="add-modal-role" name="role" required>
+                  <option value="admin">Admin</option>
+                  <option value="user" selected >User</option>
+                  <option value="station_master">Station_Master</option>
+                </select>
+              </div>
 
-          <div class="form-outline mb-4">
-            <label class="form-label" for="balance">Balance</label>
-            <input type="number" placeholder="Enter the balance" value="" step="0.01" id="add-modal-balance" name="balance" class="form-control" required />
-          </div>
+              <div class="form-outline mb-3">
+                <label class="form-label d-block mt-1" for="status">Account Status</label>
+                <select  class="form-select" id="add-modal-status" name="account_Status" required>
+                  <option value="Active">Active</option>
+                  <option value="Suspended" selected>Suspended</option>
+                </select>
+              </div>
 
-          <div class="modal-footer">
-            <button type="submit" name="addNew" class="btn btn-primary">Add User</button>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <div class="form-outline mb-4">
+                <label class="form-label" for="balance">Balance</label>
+                <input type="number" placeholder="Enter the balance" value="" step="0.01" id="add-modal-balance" name="balance" class="form-control" required />
+              </div>
+
+              <div class="modal-footer">
+                <button type="submit" name="addNew" class="btn btn-primary">Add User</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              </div>
+            </form>
           </div>
-        </form>
+        </div>
       </div>
     </div>
-  </div>
-</div>
   </main>
   
   <!-- fill Modal  -->

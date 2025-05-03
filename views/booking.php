@@ -16,7 +16,7 @@ $stations = $db->select()->fetchAll();
 <link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/themes/CSS/5e6b428acc8c4e222d1beb91.css?v=3.3.62585&themeRevisionID=5f7ed99c2c2c7240ba580251"/>
 <link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/css/styles/payment/payment_styles.css?3.3.62585" />
 <link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/css/styles/payment/payment_feature.css?3.3.62585" />
-<link href="/assets/css/booking.cs" rel="stylesheet" />
+<link href="/assets/css/booking.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -24,7 +24,7 @@ $stations = $db->select()->fetchAll();
  
 </style>
 
-<form method="POST" action="/selecttrain"><input type="hidden" name="formID" value="251186963664569" /><input type="hidden" id="JWTContainer" value="" /><input type="hidden" id="cardinalOrderNumber" value="" /><input type="hidden" id="jsExecutionTracker" name="jsExecutionTracker" value="build-date-1746226345261" /><input type="hidden" id="submitSource" name="submitSource" value="unknown" /><input type="hidden" id="buildDate" name="buildDate" value="1746226345261" /><input type="hidden" name="uploadServerUrl" value="https://upload.jotform.com/upload" /><input type="hidden" name="eventObserver" value="1" />
+<form method="POST" action="/selecttrains"><input type="hidden" name="formID" value="251186963664569" /><input type="hidden" id="JWTContainer" value="" /><input type="hidden" id="cardinalOrderNumber" value="" /><input type="hidden" id="jsExecutionTracker" name="jsExecutionTracker" value="build-date-1746226345261" /><input type="hidden" id="submitSource" name="submitSource" value="unknown" /><input type="hidden" id="buildDate" name="buildDate" value="1746226345261" /><input type="hidden" name="uploadServerUrl" value="https://upload.jotform.com/upload" /><input type="hidden" name="eventObserver" value="1" />
   <div role="main" class="form-all">
     <ul class="form-section page-section" role="presentation">
       <li id="cid_50" class="form-input-wide" data-type="control_head">
@@ -102,6 +102,7 @@ $stations = $db->select()->fetchAll();
       <button id="input_1" type="submit" class="modern-black-submit">
         Submit
       </button>
+
       </li>
         
       <li style="clear:both"></li>
