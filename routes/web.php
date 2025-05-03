@@ -1,11 +1,11 @@
 <?php
 
+use App\Controllers\AdminController;
 use App\Controllers\LoginController;
 use App\Controllers\LogOutController;
 use App\Controllers\RegisterController;
 use App\Controllers\CreateAdminController;
 use App\Controllers\AdminProfileController;
-use App\Controllers\AdminUsersController;
 use App\Controllers\Render;
 use App\Controllers\ResetPasswordController;
 
@@ -13,6 +13,7 @@ return [
   // ? GET from url normal navigate
   // ? POST from forms
   ['GET', '/', [Render::class, 'index']],
+  ['GET', '/home', [Render::class, 'index']],
   
   ['GET', '/login', [LoginController::class, 'showLogin']],
   ['POST','/login', [LoginController::class, 'loginAction']],  
@@ -29,11 +30,16 @@ return [
   ['GET', '/admin_Profile', [AdminProfileController::class, 'showAdminProfile']],
   ['POST','/admin_Profile', [AdminProfileController::class, 'saveProfileInformation']],
   
-  ['GET', '/users', [AdminUsersController::class, 'showAdmin_UsersTable']],
-  ['GET', '/deleteUser/{id}', [AdminUsersController::class, 'deleteData']],
-  ['POST','/updateUser', [AdminUsersController::class, 'updateData']],  
-  ['POST','/addUser', [AdminUsersController::class, 'addData']],  
-  
+  ['GET', '/users', [AdminController::class, 'showAdmin_UsersTable']],
+  ['GET', '/delete/users/{id}', [AdminController::class, 'deleteData']],
+  ['POST','/updateUser', [AdminController::class, 'updateData']],  
+  ['POST','/addUser', [AdminController::class, 'addData']],  
+
+  ['GET', '/trains', [AdminController::class, 'showAdmin_TrainsTable']],
+  ['GET', '/delete/trains/{id}', [AdminController::class, 'deleteData']],
+  ['POST','/updateTrain', [AdminController::class, 'updateData']],  
+  ['POST','/addTrain', [AdminController::class, 'addData']],  
+
   ['GET','/forgotPass', [Render::class, 'ShowForgotPassword']],
   ['POST','/forgotPass', [ResetPasswordController::class, 'HandlePassword']],
   

@@ -1,5 +1,4 @@
 <?php
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,9 +16,7 @@
   <link href="https://demos.creative-tim.com/argon-dashboard-pro/assets/css/nucleo-icons.css" rel="stylesheet" />
   <link href="https://demos.creative-tim.com/argon-dashboard-pro/assets/css/nucleo-svg.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-  <!-- Font Awesome Icons -->
-  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  
   <!-- CSS Files -->
   <link id="pagestyle" href="/assets/Admin_Template/assets/css/argon-dashboard.css?v=2.1.0" rel="stylesheet" />
 </head>
@@ -96,9 +93,9 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Pages</a></li>
-            <li class="breadcrumb-item text-sm text-white active" aria-current="page">Trains</li>
+            <li class="breadcrumb-item text-sm text-white active" aria-current="page">Users</li>
           </ol>
-          <h6 class="font-weight-bolder text-white mb-0">Trains</h6>
+          <h6 class="font-weight-bolder text-white mb-0">Users</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -132,190 +129,99 @@
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
-            <div class="card-header pb-0">
+            <div class="d-flex justify-content-between align-items-center card-header pb-0">
               <h6>Authors table</h6>
+              <button data-bs-toggle="modal" 
+                      data-bs-target="#addTrainModal" class="btn btn-sm btn-outline-primary">
+                      + ADD
+              </button>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
                 <table class="table align-items-center mb-0">
-                  <thead>
-                    <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Author</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Function</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Employed</th>
-                      <th class="text-secondary opacity-7"></th>
-                    </tr>
-                  </thead>
+                <thead>
+                  <tr>
+                    <th class=" text-dark text-s fw-bold">Train</th>
+                    <th class=" text-dark text-s fw-bold ps-2">departure</th>
+                    <th class="text-center  text-dark text-s fw-bold">Arrival</th>
+                    <th class=" text-dark text-s fw-bold ps-2">departure Time</th>
+                    <th class="text-center  text-dark text-s fw-bold">Arrival Time</th>
+                    <th class="text-center  text-dark text-s fw-bold">status</th>
+                    <th class="text-center  text-dark text-s fw-bold">Class</th>
+                    <th class="text-center  text-dark text-s fw-bold">Capacity</th>
+                    <th class="text-center  text-dark text-s fw-bold">Available Seats</th>
+                    <th class="text-dark">Actions</th>
+                  </tr>
+                </thead>
                   <tbody>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="/assets/Admin_Template/assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1">
+                    <?php foreach($trains as $train) :?>
+                      <tr class="<?= $train["train_class"] !== "second" ? "bg-info-subtle":" bg-dark-subtle" ?>">
+                        <td >
+                          <div class="d-flex px-2 py-1">
+                            <div>
+                              <img width="150" src="/assets/Admin_Template/assets/img/train<?= random_int(1,3)?>.jpg" class="avatar avatar-sm me-3" alt="user1">
+                            </div>
+                            <div class="d-flex flex-column justify-content-center">
+                              <h6 class="mb-0 text-sm"><?= $train["train_number"] ?></h6>
+                              <p class="text-xs text-secondary mb-0"><?= $train["train_name"] ?> , <?= $train["train_type"] ?></p>
+                            </div>
                           </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">John Michael</h6>
-                            <p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0">Manager</p>
-                        <p class="text-xs text-secondary mb-0">Organization</p>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success">Online</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
-                      </td>
-                      <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                        </td>
+                        <td>
+                          <p class="text-xs font-weight-bold mb-0"><?= $train["departure_station"] ?></p>
+                          <p class="text-xs text-danger fw-bold mb-0"> <?=( new DateTime($train["departure_time"]))->format("Y-m-d")?> </p>
+                        </td>
+                        <td >
+                          <p class="text-xs font-weight-bold mb-0"><?= $train["arrival_station"] ?></p>
+                          <p class="text-xs text-danger fw-bold mb-0"> <?=( new DateTime($train["arrival_time"]))->format("Y-m-d")?> </p>
+                        </td>
+                        <td >
+                          <p class="text-xs text-danger text-center fw-bold mb-0"> <?=( new DateTime($train["departure_time"]))->format(("h:i:s A"))?> </p>
+                        </td>
+                        <td >
+                          <p class="text-xs text-danger text-center fw-bold mb-0"> <?=( new DateTime($train["arrival_time"]))->format("h:i:s A")?> </p>
+                        </td>
+                        <td class="align-middle text-center text-sm">
+                          <span class="badge badge-sm bg-gradient-<?= $train["status"] === "active"? "success": "danger"?>"><?= $train["status"]?></span>
+                        </td>
+                        <td class="align-middle text-center text-sm">
+                          <span class="badge badge-sm bg-gradient-<?= $train["train_class"] === "first"? "primary": "warning"?>"><?= $train["train_class"]?></span>
+                        </td>
+                        <td class="align-middle text-center text-sm">
+                          <span class="text-secondary text-sm font-weight-bold"><?= $train["train_capacity"]?></span>
+                        </td>
+                        <td class="align-middle text-center text-sm">
+                          <span class="text-secondary text-sm font-weight-bold"><?= $train["available_seats"]?></span>
+                        </td>
+                        <td class="align-middle text-start">
+                        <a href="#" 
+                          class="edit-train-link me-3" 
+                          data-id="<?= $train['id'] ?>"
+                          data-train_number="<?= $train['train_number'] ?>"
+                          data-train_name="<?= $train['train_name'] ?>"
+                          data-train_type="<?= $train['train_type'] ?>"
+                          data-departure_station="<?= $train['departure_station'] ?>"
+                          data-arrival_station="<?= $train['arrival_station'] ?>"
+                          data-departure_time="<?= $train['departure_time'] ?>"
+                          data-arrival_time="<?= $train['arrival_time'] ?>"
+                          data-train_capacity="<?= $train['train_capacity'] ?>"
+                          data-status="<?= $train['status'] ?>"
+                          data-train_class="<?= $train['train_class'] ?>"
+                          data-available_seats="<?= $train['available_seats'] ?>"
+                          data-bs-toggle="modal" 
+                          data-bs-target="#editTrainModal">
                           Edit
                         </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="/assets/Admin_Template/assets/img/team-3.jpg" class="avatar avatar-sm me-3" alt="user2">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Alexa Liras</h6>
-                            <p class="text-xs text-secondary mb-0">alexa@creative-tim.com</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0">Programator</p>
-                        <p class="text-xs text-secondary mb-0">Developer</p>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-secondary">Offline</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">11/01/19</span>
-                      </td>
-                      <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                          Edit
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="/assets/Admin_Template/assets/img/team-4.jpg" class="avatar avatar-sm me-3" alt="user3">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Laurent Perrier</h6>
-                            <p class="text-xs text-secondary mb-0">laurent@creative-tim.com</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0">Executive</p>
-                        <p class="text-xs text-secondary mb-0">Projects</p>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success">Online</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">19/09/17</span>
-                      </td>
-                      <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                          Edit
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="/assets/Admin_Template/assets/img/team-3.jpg" class="avatar avatar-sm me-3" alt="user4">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Michael Levi</h6>
-                            <p class="text-xs text-secondary mb-0">michael@creative-tim.com</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0">Programator</p>
-                        <p class="text-xs text-secondary mb-0">Developer</p>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success">Online</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">24/12/08</span>
-                      </td>
-                      <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                          Edit
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="/assets/Admin_Template/assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user5">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Richard Gran</h6>
-                            <p class="text-xs text-secondary mb-0">richard@creative-tim.com</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0">Manager</p>
-                        <p class="text-xs text-secondary mb-0">Executive</p>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-secondary">Offline</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">04/10/21</span>
-                      </td>
-                      <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                          Edit
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="/assets/Admin_Template/assets/img/team-4.jpg" class="avatar avatar-sm me-3" alt="user6">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Miriam Eric</h6>
-                            <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0">Programtor</p>
-                        <p class="text-xs text-secondary mb-0">Developer</p>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-secondary">Offline</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">14/09/20</span>
-                      </td>
-                      <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                          Edit
-                        </a>
-                      </td>
-                    </tr>
+                          <a href="/delete/trains/?id=<?= $train['id'] ?>" 
+                            class="text-danger font-weight-bold text-s" 
+                            data-toggle="tooltip" 
+                            title="Delete train">
+                          Delete
+                          </a>
+                        </td>
+
+                      </tr>
+                    <?php endforeach; ?>
                   </tbody>
                 </table>
               </div>
@@ -323,264 +229,229 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-12">
-          <div class="card mb-4">
-            <div class="card-header pb-0">
-              <h6>Projects table</h6>
-            </div>
-            <div class="card-body px-0 pt-0 pb-2">
-              <div class="table-responsive p-0">
-                <table class="table align-items-center justify-content-center mb-0">
-                  <thead>
-                    <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Project</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Budget</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">Completion</th>
-                      <th></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2">
-                          <div>
-                            <img src="/assets/Admin_Template/assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm rounded-circle me-2" alt="spotify">
-                          </div>
-                          <div class="my-auto">
-                            <h6 class="mb-0 text-sm">Spotify</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">$2,500</p>
-                      </td>
-                      <td>
-                        <span class="text-xs font-weight-bold">working</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <div class="d-flex align-items-center justify-content-center">
-                          <span class="me-2 text-xs font-weight-bold">60%</span>
-                          <div>
-                            <div class="progress">
-                              <div class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                      <td class="align-middle">
-                        <button class="btn btn-link text-secondary mb-0">
-                          <i class="fa fa-ellipsis-v text-xs"></i>
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2">
-                          <div>
-                            <img src="/assets/Admin_Template/assets/img/small-logos/logo-invision.svg" class="avatar avatar-sm rounded-circle me-2" alt="invision">
-                          </div>
-                          <div class="my-auto">
-                            <h6 class="mb-0 text-sm">Invision</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">$5,000</p>
-                      </td>
-                      <td>
-                        <span class="text-xs font-weight-bold">done</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <div class="d-flex align-items-center justify-content-center">
-                          <span class="me-2 text-xs font-weight-bold">100%</span>
-                          <div>
-                            <div class="progress">
-                              <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                      <td class="align-middle">
-                        <button class="btn btn-link text-secondary mb-0" aria-haspopup="true" aria-expanded="false">
-                          <i class="fa fa-ellipsis-v text-xs"></i>
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2">
-                          <div>
-                            <img src="/assets/Admin_Template/assets/img/small-logos/logo-jira.svg" class="avatar avatar-sm rounded-circle me-2" alt="jira">
-                          </div>
-                          <div class="my-auto">
-                            <h6 class="mb-0 text-sm">Jira</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">$3,400</p>
-                      </td>
-                      <td>
-                        <span class="text-xs font-weight-bold">canceled</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <div class="d-flex align-items-center justify-content-center">
-                          <span class="me-2 text-xs font-weight-bold">30%</span>
-                          <div>
-                            <div class="progress">
-                              <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="30" style="width: 30%;"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                      <td class="align-middle">
-                        <button class="btn btn-link text-secondary mb-0" aria-haspopup="true" aria-expanded="false">
-                          <i class="fa fa-ellipsis-v text-xs"></i>
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2">
-                          <div>
-                            <img src="/assets/Admin_Template/assets/img/small-logos/logo-slack.svg" class="avatar avatar-sm rounded-circle me-2" alt="slack">
-                          </div>
-                          <div class="my-auto">
-                            <h6 class="mb-0 text-sm">Slack</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">$1,000</p>
-                      </td>
-                      <td>
-                        <span class="text-xs font-weight-bold">canceled</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <div class="d-flex align-items-center justify-content-center">
-                          <span class="me-2 text-xs font-weight-bold">0%</span>
-                          <div>
-                            <div class="progress">
-                              <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="0" style="width: 0%;"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                      <td class="align-middle">
-                        <button class="btn btn-link text-secondary mb-0" aria-haspopup="true" aria-expanded="false">
-                          <i class="fa fa-ellipsis-v text-xs"></i>
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2">
-                          <div>
-                            <img src="/assets/Admin_Template/assets/img/small-logos/logo-webdev.svg" class="avatar avatar-sm rounded-circle me-2" alt="webdev">
-                          </div>
-                          <div class="my-auto">
-                            <h6 class="mb-0 text-sm">Webdev</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">$14,000</p>
-                      </td>
-                      <td>
-                        <span class="text-xs font-weight-bold">working</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <div class="d-flex align-items-center justify-content-center">
-                          <span class="me-2 text-xs font-weight-bold">80%</span>
-                          <div>
-                            <div class="progress">
-                              <div class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="80" style="width: 80%;"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                      <td class="align-middle">
-                        <button class="btn btn-link text-secondary mb-0" aria-haspopup="true" aria-expanded="false">
-                          <i class="fa fa-ellipsis-v text-xs"></i>
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2">
-                          <div>
-                            <img src="/assets/Admin_Template/assets/img/small-logos/logo-xd.svg" class="avatar avatar-sm rounded-circle me-2" alt="xd">
-                          </div>
-                          <div class="my-auto">
-                            <h6 class="mb-0 text-sm">Adobe XD</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-sm font-weight-bold mb-0">$2,300</p>
-                      </td>
-                      <td>
-                        <span class="text-xs font-weight-bold">done</span>
-                      </td>
-                      <td class="align-middle text-center">
-                        <div class="d-flex align-items-center justify-content-center">
-                          <span class="me-2 text-xs font-weight-bold">100%</span>
-                          <div>
-                            <div class="progress">
-                              <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                      <td class="align-middle">
-                        <button class="btn btn-link text-secondary mb-0" aria-haspopup="true" aria-expanded="false">
-                          <i class="fa fa-ellipsis-v text-xs"></i>
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal fade" id="editTrainModal" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+      <div class="modal-dialog d-flex justify-content-center">
+        <div class="modal-content w-100">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel1">Edit Train</h5>
+            <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-4">
+            <form method="POST" action="updateTrain">
+              
+              <div class="d-flex justify-content-between align-item-center">
+      
+                <input type="hidden" id="modal-train-id" name="id" value="">
+                <!-- table name -->
+                <input type="hidden" id="tableName" name="table" value="trains">
+
+                <div class="form-outline mb-3">
+                  <label class="form-label" for="modal-train_name">Train Name</label>
+                  <input type="text" value="" id="modal-train_name" name="train_name" class="form-control" required />
+                </div>
+                
+                <div class="form-outline mb-3">
+                  <label class="form-label" for="modal-train_number">Train Number</label>
+                  <input type="number" value="" id="modal-train_number" name="train_number" class="form-control" required />
+                </div>
+                
               </div>
-            </div>
+
+              <div class="d-flex justify-content-between align-item-center">
+                <div class="form-outline mb-3">
+                  <label class="form-label" for="modal-train_type">Train Type</label>
+                  <input type="text" value="" id="modal-train_type" name="train_type" class="form-control" required />
+                </div>
+                
+                <div class="form-outline mb-3">
+                  <label class="form-label" for="modal-train_capacity">Train Capacity</label>
+                  <input type="number" value="" id="modal-train_capacity" name="train_capacity" class="form-control" required />
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-between align-item-center">
+                <div class="form-outline mb-3">
+                  <label class="form-label" for="modal-departure_station">Departure Station</label>
+                  <input type="text" value="" id="modal-departure_station" name="departure_station" class="form-control" required />
+                </div>
+                
+                <div class="form-outline mb-3">
+                  <label class="form-label" for="modal-arrival_station">Arrival Station</label>
+                  <input type="text" value="" id="modal-arrival_station" name="arrival_station" class="form-control" required />
+                </div>
+              </div>
+              
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="form-outline mb-3 me-2" style="flex: 1;">
+                  <label class="form-label" for="modal-departure_time">Departure Time</label>
+                  <input type="datetime-local" id="modal-departure_time" name="departure_time" class="form-control" required />
+                </div>
+              
+                <div class="form-outline mb-3 ms-2" style="flex: 1;">
+                  <label class="form-label" for="modal-arrival_time">Arrival Time</label>
+                  <input type="datetime-local" id="modal-arrival_time" name="arrival_time" class="form-control" required />
+                </div>
+              </div>
+
+
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="form-outline mb-3">
+                  <label class="form-label" for="modal-available_seats">Available Seats</label>
+                  <input type="number" value="" id="modal-available_seats" name="available_seats" class="form-control" required />
+                </div>
+
+                <div class="form-outline mb-3">
+                  <label class="form-label d-block mt-1" for="status">Train Status</label>
+                  <select class="form-select" id="modal-status" name="status" required>
+                    <option value="active">Active</option>
+                    <option value="not active">Not Active</option>
+                  </select>
+                </div>
+
+                <div class="form-outline mb-3">
+                  <label class="form-label d-block mt-1" for="train_class">Train Class</label>
+                  <select class="form-select" id="modal-train_class" name="train_class" required>
+                    <option value="first">First</option>
+                    <option value="second">Second</option>
+                  </select>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" name="savedChanges" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-      <footer class="footer pt-3  ">
-        <div class="container-fluid">
-          <div class="row align-items-center justify-content-lg-between">
-            <div class="col-lg-6 mb-lg-0 mb-4">
-              <div class="copyright text-center text-sm text-muted text-lg-start">
-                © <script>
-                  document.write(new Date().getFullYear())
-                </script>,
-                made with <i class="fa fa-heart"></i> by
-                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
-                for a better web.
+    </div>
+
+    <!-- Add Modal -->
+        
+    <div class="modal fade" id="addTrainModal" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+      <div class="modal-dialog d-flex justify-content-center">
+        <div class="modal-content w-100">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel1">Add Train</h5>
+            <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-4">
+            <form method="POST" action="addTrain">
+              
+              <div class="d-flex justify-content-between align-item-center">
+      
+                <input type="hidden" id="modal-train-id" name="id" value="">
+                <!-- table name -->
+                <input type="hidden" id="tableName" name="table" value="trains">
+
+                <div class="form-outline mb-3">
+                  <label class="form-label" for="modal-train_name">Train Name</label>
+                  <input type="text" placeholder="Enter Train Name" value="" id="modal-train_name" name="train_name" class="form-control" required />
+                </div>
+                
+                <div class="form-outline mb-3">
+                  <label class="form-label" for="modal-train_number">Train Number</label>
+                  <input type="number" placeholder="Enter Train Number" value="" id="modal-train_number" name="train_number" class="form-control" required />
+                </div>
+                
               </div>
-            </div>
-            <div class="col-lg-6">
-              <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
-                </li>
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
-                </li>
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
-                </li>
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
-                </li>
-              </ul>
-            </div>
+
+              <div class="d-flex justify-content-between align-item-center">
+                <div class="form-outline mb-3">
+                  <label class="form-label" for="modal-train_type">Train Type</label>
+                  <input type="text" placeholder="Enter Train Type" value="" id="modal-train_type" name="train_type" class="form-control" required />
+                </div>
+                
+                <div class="form-outline mb-3">
+                  <label class="form-label" for="modal-train_capacity">Train Capacity</label>
+                  <input type="number" placeholder="Enter Train Capacity" value="" id="modal-train_capacity" name="train_capacity" class="form-control" required />
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-between align-item-center">
+                <div class="form-outline mb-3">
+                  <label class="form-label" for="modal-departure_station">Departure Station</label>
+                  <input type="text" placeholder="Enter Departure Station" value="" id="modal-departure_station" name="departure_station" class="form-control" required />
+                </div>
+                
+                <div class="form-outline mb-3">
+                  <label class="form-label" for="modal-arrival_station">Arrival Station</label>
+                  <input type="text" placeholder="Enter Arrival Station" value="" id="modal-arrival_station" name="arrival_station" class="form-control" required />
+                </div>
+              </div>
+              
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="form-outline mb-3 me-2" style="flex: 1;">
+                  <label class="form-label" for="modal-departure_time">Departure Time</label>
+                  <input type="datetime-local" id="modal-departure_time" name="departure_time" class="form-control" required />
+                </div>
+              
+                <div class="form-outline mb-3 ms-2" style="flex: 1;">
+                  <label class="form-label" for="modal-arrival_time">Arrival Time</label>
+                  <input type="datetime-local" id="modal-arrival_time" name="arrival_time" class="form-control" required />
+                </div>
+              </div>
+
+
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="form-outline mb-3">
+                  <label class="form-label" for="modal-available_seats">Available Seats</label>
+                  <input type="number" placeholder="Enter Available Seats" value="" id="modal-available_seats" name="available_seats" class="form-control" required />
+                </div>
+
+                <div class="form-outline mb-3">
+                  <label class="form-label d-block mt-1" for="status">Train Status</label>
+                  <select class="form-select" id="modal-status" name="status" required>
+                    <option value="active" selected>Active</option>
+                    <option value="not active">Not Active</option>
+                  </select>
+                </div>
+
+                <div class="form-outline mb-3">
+                  <label class="form-label d-block mt-1" for="train_class">Train Class</label>
+                  <select class="form-select" id="modal-train_class" name="train_class" required>
+                    <option value="first" selected>First</option>
+                    <option value="second">Second</option>
+                  </select>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" name="addNew" class="btn btn-primary">Add New</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              </div>
+            </form>
           </div>
         </div>
-      </footer>
+      </div>
     </div>
   </main>
+  
+  <!-- fill Modal  -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const editLinks = document.querySelectorAll('.edit-train-link');
+
+      editLinks.forEach(link => {
+        link.addEventListener('click', function () {
+          document.getElementById('modal-train-id').value = this.dataset.id;
+          document.getElementById('modal-train_name').value = this.dataset.train_name;
+          document.getElementById('modal-train_type').value = this.dataset.train_type;
+          document.getElementById('modal-train_number').value = this.dataset.train_number;
+          document.getElementById('modal-train_capacity').value = this.dataset.train_capacity;
+          document.getElementById('modal-departure_station').value = this.dataset.departure_station;
+          document.getElementById('modal-departure_time').value = this.dataset.departure_time;
+          document.getElementById('modal-arrival_station').value = this.dataset.arrival_station;
+          document.getElementById('modal-arrival_time').value = this.dataset.arrival_time;
+          document.getElementById('modal-available_seats').value = this.dataset.available_seats;
+          document.getElementById('modal-status').value = this.dataset.status;
+        });
+      });
+    });
+  </script>
+
 
   <!--   Core JS Files   -->
   <script src="/assets/Admin_Template/assets/js/core/popper.min.js"></script>
@@ -600,6 +471,8 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="/assets/Admin_Template/assets/js/argon-dashboard.min.js?v=2.1.0"></script>
+<!-- MDB JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
 </body>
 
 </html>

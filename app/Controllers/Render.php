@@ -18,9 +18,9 @@ class Render extends AbstractContoller
   }
   public function index()
     {
-      $check = $this->checkAdminLogin(); 
+      $check = $this->checkUserLogin(); 
       if( $check === true){
-        return $this->render('home');
+        return $this->render('/home');
       }
       return $check;
     }
