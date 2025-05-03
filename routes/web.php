@@ -44,6 +44,8 @@ return [
   ['POST', '/reset', [ResetPasswordController::class, 'HandleReset']],
 
   ['GET', '/book', [BookingController::class, 'ShowBooking']],
+  ['POST', '/selecttrains', [BookingController::class, 'ShowSelectTrains']],
+
 ];
 
 
