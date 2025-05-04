@@ -14,7 +14,7 @@ use App\Controllers\ResetPasswordController;
 return [
   // ? GET from url normal navigate
   // ? POST from forms
-  ['GET', '/', [Render::class, 'index']],
+  ['GET', '/', [LoginController::class, 'showLogin']],
   ['GET', '/home', [Render::class, 'index']],
   
   ['GET', '/login', [LoginController::class, 'showLogin']],
@@ -49,7 +49,8 @@ return [
   ['POST', '/reset', [ResetPasswordController::class, 'HandleReset']],
 
   ['GET', '/book', [BookingController::class, 'ShowBooking']],
-  ['POST', '/selecttrains', [BookingController::class, 'ShowSelectTrains']],
+  ['POST', '/selecttrains', [BookingController::class, 'HandleBookingForm']],
+  ['GET', '/selecttrains', [BookingController::class, 'ShowSelectTrains']],
 
 ];
 

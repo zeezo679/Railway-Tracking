@@ -1,12 +1,6 @@
-<?php
-use App\Database\DB;
-
-$db = new DB("stations");
-$stations = $db->select()->fetchAll();
-?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="e n">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,9 +35,10 @@ $stations = $db->select()->fetchAll();
       <li class="form-line form-line-column form-col-3" data-type="control_dropdown" id="id_99">
   <label class="form-label form-label-top form-label-auto" id="label_99" for="input_99" aria-hidden="false"> Journey From </label>
   <div id="cid_99" class="form-input-wide" data-layout="half">
+  <pre><?php var_dump($stations); ?></pre>
     <select class="form-dropdown" id="input_99" name="q99_journeyFrom" style="width:310px" data-component="dropdown" aria-label="Journey From">
     <?php foreach ($stations as $station): ?>
-        <option value="<?= htmlspecialchars($station['station_id']) ?>">
+        <option value="<?= htmlspecialchars($station['station_name']) ?>">
         <?= htmlspecialchars($station['station_name']) ?>
         </option>
     <?php endforeach; ?>
@@ -57,7 +52,7 @@ $stations = $db->select()->fetchAll();
   <div id="cid_100" class="form-input-wide" data-layout="half">
     <select class="form-dropdown" id="input_100" name="q100_journeyTo" style="width:310px" data-component="dropdown" aria-label="Journey To">
       <?php foreach ($stations as $station): ?>
-        <option value="<?= htmlspecialchars($station['station_id']) ?>">
+        <option value="<?= htmlspecialchars($station['station_name']) ?>">
         <?= htmlspecialchars($station['station_name']) ?>
         </option>
     <?php endforeach; ?>
