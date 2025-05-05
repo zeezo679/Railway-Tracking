@@ -68,7 +68,7 @@
           </a>
         </li>
         <li class="nav-item">
-        <a class="nav-link ms-3" href="booking">
+        <a class="nav-link ms-3" href="bookings">
             <i class="fas fa-ticket-simple fa-5x text-primary-emphasis"></i>
             <span class="nav-link-text ms-1">Booking</span>
           </a>
@@ -131,44 +131,44 @@
     </nav>
     <!-- End Navbar -->
     <div class="container rounded bg-white mt-5 mb-5">
-    <form method="POST" action="admin_Profile" class="row">
-        <div class="col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold"><?=$_SESSION["user"]["firstName"]?></span><span class="text-black-50"><?=$_SESSION["user"]["email"]?></span><span> </span></div>
-        </div>
-        <div class="col-md-5 border-right">
-            <div class="p-3 py-5">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-right">Profile Settings</h4>
-                </div>
-                <div class="row mt-2">
-                    <div class="col-md-6"><label class="labels">First Name</label><input type="text" name="firstName" class="form-control" placeholder="first name" value="<?=isset($_SESSION["user"]["firstName"]) ?$_SESSION["user"]["firstName"]:"" ?>"></div>
-                    <div class="col-md-6"><label class="labels">Last Name</label><input type="text"  name="lastName" class="form-control" value="<?=isset($_SESSION["user"]["lastName"]) ?$_SESSION["user"]["lastName"]:"" ?>" placeholder="surname"></div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-md-12"><label class="labels">Mobile Number</label><input name="mobile" type="text" class="form-control" placeholder="enter phone number" value="<?=isset($_SESSION["user"]["mobile"]) ?$_SESSION["user"]["mobile"]:"" ?>"></div>
-                    <div class="col-md-12"><label class="labels">Address Line 1</label><input name="address1" type="text" class="form-control" placeholder="enter address line 1" value="<?=isset($_SESSION["user"]["address1"]) ?$_SESSION["user"]["address1"]:"" ?>"></div>
-                    <div class="col-md-12"><label class="labels">Address Line 2</label><input name="address2" type="text" class="form-control" placeholder="enter address line 2" value="<?=isset($_SESSION["user"]["address2"]) ?$_SESSION["user"]["address2"]:"" ?>"></div>
-                    <div class="col-md-12"><label class="labels">Postcode</label><input name="postcode" type="text" class="form-control" placeholder="enter address line 2" value="<?=isset($_SESSION["user"]["postcode"]) ?$_SESSION["user"]["postcode"]:"" ?>"></div>
-                    <div class="col-md-12"><label class="labels">State</label><input name="state" type="text" class="form-control" placeholder="enter address line 2" value="<?=isset($_SESSION["user"]["state"]) ?$_SESSION["user"]["state"]:"" ?>"></div>
-                    <div class="col-md-12"><label class="labels">Area</label><input name="area" type="text" class="form-control" placeholder="enter address line 2" value="<?=isset($_SESSION["user"]["area"]) ?$_SESSION["user"]["area"]:"" ?>"></div>
-                    <div class="col-md-12"><label class="labels">Email ID</label><input name="email" type="text" class="form-control" placeholder="enter email id" value="<?=isset($_SESSION["user"]["email"]) ?$_SESSION["user"]["email"]:"" ?>"></div>
-                    <div class="col-md-12"><label class="labels">Education</label><input name="education" type="text" class="form-control" placeholder="education" value="<?=isset($_SESSION["user"]["education"]) ?$_SESSION["user"]["education"]:"" ?>"></div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-md-6"><label class="labels">Country</label><input name="country" type="text" class="form-control" placeholder="country" value="<?=isset($_SESSION["user"]["country"]) ?$_SESSION["user"]["country"]:"" ?>"></div>
-                    <div class="col-md-6"><label class="labels">State/Region</label><input name="region" type="text" class="form-control" value="" placeholder="state"></div>
-                </div>
-                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save Profile</button></div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="p-3 py-5">
-                <div class="d-flex justify-content-between align-items-center experience"><span>Edit Experience</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span></div><br>
-                <div class="col-md-12"><label class="labels">Experience in Designing</label><input name="exp" type="text" class="form-control" placeholder="experience" value="<?=isset($_SESSION["user"]["exp"]) ?$_SESSION["user"]["exp"]:"" ?>"></div> <br>
-                <div class="col-md-12"><label class="labels">Additional Details</label><input name="details" type="text" class="form-control" placeholder="additional details" value="<?=isset($_SESSION["user"]["details"]) ?$_SESSION["user"]["details"]:"" ?>"></div>
-            </div>
-        </div>
-    </form>
+      <form method="POST" action="admin_Profile" class="row">
+          <div class="col-md-3 border-right">
+              <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold"><?=$_SESSION["user"]["firstName"]?></span><span class="text-black-50"><?=$_SESSION["user"]["email"]?></span><span> </span></div>
+          </div>
+          <div class="col-md-5 border-right">
+              <div class="p-3 py-5">
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                      <h4 class="text-right">Profile Settings</h4>
+                  </div>
+                  <div class="row mt-2">
+                      <div class="col-md-6"><label class="labels">First Name</label><input type="text" name="firstName" class="form-control" placeholder="first name" value="<?=isset($_SESSION["user"]["firstName"]) ?$_SESSION["user"]["firstName"]:"" ?>"></div>
+                      <div class="col-md-6"><label class="labels">Last Name</label><input type="text"  name="lastName" class="form-control" value="<?=isset($_SESSION["user"]["lastName"]) ?$_SESSION["user"]["lastName"]:"" ?>" placeholder="surname"></div>
+                  </div>
+                  <div class="row mt-3">
+                      <div class="col-md-12"><label class="labels">Mobile Number</label><input name="mobile" type="text" class="form-control" placeholder="enter phone number" value="<?=isset($_SESSION["user"]["mobile"]) ?$_SESSION["user"]["mobile"]:"" ?>"></div>
+                      <div class="col-md-12"><label class="labels">Address Line 1</label><input name="address1" type="text" class="form-control" placeholder="enter address line 1" value="<?=isset($_SESSION["user"]["address1"]) ?$_SESSION["user"]["address1"]:"" ?>"></div>
+                      <div class="col-md-12"><label class="labels">Address Line 2</label><input name="address2" type="text" class="form-control" placeholder="enter address line 2" value="<?=isset($_SESSION["user"]["address2"]) ?$_SESSION["user"]["address2"]:"" ?>"></div>
+                      <div class="col-md-12"><label class="labels">Postcode</label><input name="postcode" type="text" class="form-control" placeholder="enter address line 2" value="<?=isset($_SESSION["user"]["postcode"]) ?$_SESSION["user"]["postcode"]:"" ?>"></div>
+                      <div class="col-md-12"><label class="labels">State</label><input name="state" type="text" class="form-control" placeholder="enter address line 2" value="<?=isset($_SESSION["user"]["state"]) ?$_SESSION["user"]["state"]:"" ?>"></div>
+                      <div class="col-md-12"><label class="labels">Area</label><input name="area" type="text" class="form-control" placeholder="enter address line 2" value="<?=isset($_SESSION["user"]["area"]) ?$_SESSION["user"]["area"]:"" ?>"></div>
+                      <div class="col-md-12"><label class="labels">Email ID</label><input name="email" type="text" class="form-control" placeholder="enter email id" value="<?=isset($_SESSION["user"]["email"]) ?$_SESSION["user"]["email"]:"" ?>"></div>
+                      <div class="col-md-12"><label class="labels">Education</label><input name="education" type="text" class="form-control" placeholder="education" value="<?=isset($_SESSION["user"]["education"]) ?$_SESSION["user"]["education"]:"" ?>"></div>
+                  </div>
+                  <div class="row mt-3">
+                      <div class="col-md-6"><label class="labels">Country</label><input name="country" type="text" class="form-control" placeholder="country" value="<?=isset($_SESSION["user"]["country"]) ?$_SESSION["user"]["country"]:"" ?>"></div>
+                      <div class="col-md-6"><label class="labels">State/Region</label><input name="region" type="text" class="form-control" value="" placeholder="state"></div>
+                  </div>
+                  <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save Profile</button></div>
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="p-3 py-5">
+                  <div class="d-flex justify-content-between align-items-center experience"><span>Edit Experience</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span></div><br>
+                  <div class="col-md-12"><label class="labels">Experience in Designing</label><input name="exp" type="text" class="form-control" placeholder="experience" value="<?=isset($_SESSION["user"]["exp"]) ?$_SESSION["user"]["exp"]:"" ?>"></div> <br>
+                  <div class="col-md-12"><label class="labels">Additional Details</label><input name="details" type="text" class="form-control" placeholder="additional details" value="<?=isset($_SESSION["user"]["details"]) ?$_SESSION["user"]["details"]:"" ?>"></div>
+              </div>
+          </div>
+      </form>
     </div>
 </div>
 </div>

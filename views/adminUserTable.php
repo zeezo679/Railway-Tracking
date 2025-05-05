@@ -63,7 +63,7 @@
           </a>
         </li>
         <li class="nav-item">
-        <a class="nav-link ms-3" href="booking">
+        <a class="nav-link ms-3" href="bookings">
             <i class="fas fa-ticket-simple fa-5x text-primary-emphasis"></i>
             <span class="nav-link-text ms-1">Booking</span>
           </a>

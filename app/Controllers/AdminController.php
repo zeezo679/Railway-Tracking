@@ -30,6 +30,29 @@ class AdminController extends AbstractContoller
         }
         return $check;
     }
+    public function showAdmin_StationsTable(){
+      $this->defineTable("stations");
+      $check = $this->checkAdminLogin();
+      if($check === true){
+          $stations = $this->getData();
+          return $this->render('adminStationsTable',['stations' => $stations]);
+        }
+        return $check;
+    }
+    public function ShowBooking(){
+      $this->defineTable("bookings");
+      $check = $this->checkAdminLogin();
+      if($check === true){
+          $bookings = $this->retriveBookingsData();
+          return $this->render('adminBookingTable',['bookings' => $bookings]);
+        }
+        return $check;
+    }
+
+    public function retriveBookingsData(){
+      $data =  $this->tableObj->retriveBookings();
+      return $data;
+    }
     public function getData(){
       $data =  $this->tableObj->retriveData();
       return $data;

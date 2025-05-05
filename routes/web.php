@@ -42,13 +42,21 @@ return [
   ['POST','/updateTrain', [AdminController::class, 'updateData']],  
   ['POST','/addTrain', [AdminController::class, 'addData']],  
 
+  ['GET', '/stations', [AdminController::class, 'showAdmin_StationsTable']],
+  ['GET', '/delete/stations/{id}', [AdminController::class, 'deleteData']],
+  ['POST','/updateStation', [AdminController::class, 'updateData']],  
+  ['POST','/addStation', [AdminController::class, 'addData']],  
+
   ['GET','/forgotPass', [Render::class, 'ShowForgotPassword']],
   ['POST','/forgotPass', [ResetPasswordController::class, 'HandlePassword']],
   
   ['GET', '/reset', [Render::class, 'ShowResetPassword']],
   ['POST', '/reset', [ResetPasswordController::class, 'HandleReset']],
 
-  ['GET', '/book', [BookingController::class, 'ShowBooking']],
+  ['GET', '/bookings', [AdminController::class, 'ShowBooking']],
+  ['GET', '/delete/bookings/{id}', [AdminController::class, 'deleteData']],
+  ['POST','/updateBooking', [AdminController::class, 'updateData']],
+
   ['POST', '/selecttrains', [BookingController::class, 'HandleBookingForm']],
   ['GET', '/selecttrains', [BookingController::class, 'ShowSelectTrains']],
 

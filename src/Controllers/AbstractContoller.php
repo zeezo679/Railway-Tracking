@@ -2,7 +2,6 @@
 
 namespace Ziada\Mvc\Controllers;
 
-use Twig\Environment;
 use Ziada\Mvc\Http\Request;
 use Ziada\Mvc\Http\Response;
 

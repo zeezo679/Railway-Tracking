@@ -42,11 +42,31 @@ class DB implements dbContract{
     return $this;
   }
   public function select($columns="*"){
-    $this->sql = "SELECT $columns FROM $this->table";
+    $this->sql = "SELECT $columns FROM $this->table ";
     // ? return this to make the excution
     return $this;
   }
-
+  public function join($S_Table,$C_F_Table,$C_S_Table,$Alias_STable=""){
+    if(!empty($Alias_STable)){
+      $this->sql .= " JOIN $S_Table AS $Alias_STable ON
+      $this->table.$C_F_Table =
+      $Alias_STable.$C_S_Table
+      ";
+    }else{
+        $this->sql .= " JOIN $S_Table ON
+      $this->table.$C_F_Table =
+      $S_Table.$C_S_Table
+      ";
+    }
+    return $this;
+  } 
+  public function orderBy($col_in_firstTable){
+    $this->sql .= " ORDER BY 
+                  $this->table.$col_in_firstTable
+                  DESC
+                  ";
+    return $this;
+  }
   public function update($data){
     $rows = "";
     foreach ($data as $key => $value) {
@@ -83,14 +103,15 @@ class DB implements dbContract{
       die("Failed to excute the query" . mysqli_error($this->conn));
     };
   }
-
   public function getRow(){
     $query = mysqli_query($this->conn,$this->sql);
     return mysqli_fetch_assoc($query);
   }
   public function fetchAll(){
+    // echo "<pre>$this->sql</pre>";
     $query = mysqli_query($this->conn,$this->sql);
     return mysqli_fetch_all($query,MYSQLI_ASSOC);
   }
+
 }
 ?>
