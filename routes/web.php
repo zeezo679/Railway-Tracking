@@ -8,6 +8,7 @@ use App\Controllers\CreateAdminController;
 use App\Controllers\AdminProfileController;
 use App\Controllers\AdminUsersController;
 use App\Controllers\BookingController;
+use App\Controllers\PaymentController;
 use App\Controllers\Render;
 use App\Controllers\ResetPasswordController;
 
@@ -60,6 +61,9 @@ return [
   ['POST', '/selecttrains', [BookingController::class, 'HandleBookingForm']],
   ['GET', '/selecttrains', [BookingController::class, 'ShowSelectTrains']],
 
+  ['GET', '/book', [BookingController::class, 'ShowBooking']],
+
+  ['GET', '/payment', [PaymentController::class, 'ShowPay']],
 ];
 
 

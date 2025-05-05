@@ -8,7 +8,7 @@
 
 .table-content thead tr
 {
-    background-color: #009879;
+    background-color: #0071ce;
     color: white;
     text-align: left;
     font-weight: bold;
@@ -32,6 +32,67 @@
 
 .table-content tbody tr:last-of-type
 {
-    border-bottom: 2px solid #009879;
+    border-bottom: 2px solid #0071ce;
 }
 
+
+.cardPay {
+    background-color: #0071ce;
+    color: white;
+    padding: 30px;
+    border-radius: 14px;
+    width: 400px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Modern shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .cardPay:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  }
+
+  .cost-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+
+  .divider {
+    border-top: 1px solid rgba(255,255,255,0.3);
+    margin: 20px 0;
+  }
+
+  .total-label {
+    font-size: 14px;
+    opacity: 0.85;
+    margin-bottom: 4px;
+  }
+
+  .total {
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  .footer-text {
+    margin-top: 25px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .book-btn {
+    margin-top: 15px;
+    background-color: #00c853;
+    color: white;
+    border: none;
+    padding: 14px 0;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .book-btn:hover {
+    background-color: #00b84d;
+  }

@@ -32,24 +32,54 @@
     </tr>
   </thead>
   <tbody>
-  <?php foreach ($trains as $train): ?>
+  <?php if (empty($trains) || !is_array($trains)): ?>
     <tr>
-      <td>
-        <input type="radio" name="train_id" value="<?= $train['id'] ?>" required>
-      </td>
-      <td><?= htmlspecialchars($train['train_number']) ?></td>
-      <td><?= htmlspecialchars($train['train_name']) ?></td>
-      <td><?= htmlspecialchars($train['train_type']) ?></td>
-      <td><?= htmlspecialchars($train['departure_station']) ?></td>
-      <td><?= htmlspecialchars($train['arrival_station']) ?></td>
-      <td><?= htmlspecialchars($train['departure_time']) ?></td>
-      <td><?= htmlspecialchars($train['arrival_time']) ?></td>
-      <td><?= htmlspecialchars($train['train_class']) ?></td>
-      <td><?= htmlspecialchars($train['available_seats']) ?></td>
+        <td colspan="10" style="text-align:center; color:#b94a48; background:#fcf8e3;">
+            There are no active trains/journeys right now!
+        </td>
     </tr>
+<?php else: ?>
+    <?php foreach ($trains as $train): ?>
+        <tr>
+            <td>
+              <input type="radio" name="train_id"
+              value="<?= $train['id'] ?>"
+              ticket-cost="<?= $train['ticket_cost'] ?>"
+              service-cost="<?= $train['service_cost'] ?>"
+              required>
+            </td>
+            <td><?= htmlspecialchars($train['train_number']) ?></td>
+            <td><?= htmlspecialchars($train['train_name']) ?></td>
+            <td><?= htmlspecialchars($train['train_type']) ?></td>
+            <td><?= htmlspecialchars($train['departure_station']) ?></td>
+            <td><?= htmlspecialchars($train['arrival_station']) ?></td>
+            <td><?= htmlspecialchars($train['departure_time']) ?></td>
+            <td><?= htmlspecialchars($train['arrival_time']) ?></td>
+            <td><?= htmlspecialchars($train['train_class']) ?></td>
+            <td><?= htmlspecialchars($train['available_seats']) ?></td>
+        </tr>
     <?php endforeach; ?>
+<?php endif; ?>
+
   </tbody>
 </table>
+<div class="cardPay">
+  <div class="cost-row">
+    <span>Ticket Cost</span>
+    <span id="ticket-cost">$0.00</span>
+  </div>
+  <div class="cost-row">
+    <span>Service Cost</span>
+    <span id="service-cost">$0.00</span>
+  </div>
+  <div class="divider"></div>
+  <div class="total-label">Total Cost</div>
+  <div class="total" id="total-cost">$0.00</div>
 
+  <div class="footer-text">Ready for Take Off?</div>
+  <button class="book-btn">Confirm & Proceed to Checkout</button>
+</div>
+
+<script src="/assets/js/select_train.js"></script>
 </body>
 </html>

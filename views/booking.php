@@ -35,7 +35,6 @@
       <li class="form-line form-line-column form-col-3" data-type="control_dropdown" id="id_99">
   <label class="form-label form-label-top form-label-auto" id="label_99" for="input_99" aria-hidden="false"> Journey From </label>
   <div id="cid_99" class="form-input-wide" data-layout="half">
-  <pre><?php var_dump($stations); ?></pre>
     <select class="form-dropdown" id="input_99" name="q99_journeyFrom" style="width:310px" data-component="dropdown" aria-label="Journey From">
     <?php foreach ($stations as $station): ?>
         <option value="<?= htmlspecialchars($station['station_name']) ?>">
@@ -61,6 +60,33 @@
   </div>
 </li>
 
+<li class="form-line form-line-column form-col-3" data-type="control_dropdown" id="id_99" style="width: 100%;">
+  <label class="form-label form-label-top form-label-auto" id="label_99" for="input_99" aria-hidden="false"> Journey Type </label>
+  <div id="cid_99" class="form-input-wide" data-layout="half">
+    <select class="form-dropdown" id="input_200" name="journey-type" style="width:100%" data-component="dropdown" aria-label="Journey From">
+        <option value="one-way">
+          One Way
+        </option>
+        <option value="return">
+          Return
+        </option>
+    </select>
+  </div>
+</li>
+
+<li class="form-line form-line-column form-col-3" data-type="control_dropdown" id="id_99" style="width: 100%;">
+  <label class="form-label form-label-top form-label-auto" id="label_99" for="input_99" aria-hidden="false"> Select Class </label>
+  <div id="cid_99" class="form-input-wide" data-layout="half">
+    <select class="form-dropdown" id="input_200" name="class-type" style="width:100%" data-component="dropdown" aria-label="Journey From">
+        <option value="first">
+          first
+        </option>
+        <option value="second">
+          second
+        </option>
+    </select>
+  </div>
+</li>
 <li class="form-line" data-type="control_number" id="id_num_passengers">
   <label class="form-label form-label-top" for="num_passengers">Number of Passengers</label>
   <div class="form-input-wide">
@@ -79,6 +105,7 @@
     <label class="form-sub-label" for="num_passengers" id="sublabel_num_passengers" style="min-height:13px">Enter a value between 1 and 10</label>
   </div>
 </li>
+
 
       <li class="form-line" data-type="control_datetime" id="id_15"><label class="form-label form-label-left" id="label_15" for="day_15" aria-hidden="false"> Departure/Journey Date </label>
         <div id="cid_15" class="form-input" data-layout="half">
