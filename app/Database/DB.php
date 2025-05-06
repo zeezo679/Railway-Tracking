@@ -89,8 +89,12 @@ class DB implements dbContract{
     // ? to complete condition
     return $this;
   }
-  public function where($coulmn,$operator,$value){
-    $this->sql .=" WHERE $coulmn $operator '$value'";
+  public function where($coulmn,$operator,$value,$Alias=""){
+    if($Alias===""){
+      $this->sql .=" WHERE $coulmn $operator '$value'";
+      return $this;
+    }
+    $this->sql .=" WHERE $Alias.$coulmn $operator '$value'";
     return $this;
   }
   public function andWhere($coulmn,$operator,$value){

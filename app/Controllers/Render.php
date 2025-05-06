@@ -16,14 +16,7 @@ class Render extends AbstractContoller
     }
     return $this->render('home');
   }
-  public function index()
-    {
-      $check = $this->checkUserLogin(); 
-      if( $check === true){
-        return $this->render('/home');
-      }
-      return $this->render('home');
-    }
+
     public function ShowForgotPassword()
     {
         return $this->render('forgotPassword');
