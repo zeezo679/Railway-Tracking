@@ -1,7 +1,4 @@
-<?php
-    $notifications = $_SESSION['notifications'] ?? [];
-    // print_r($_SESSION['notifications']);
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -148,7 +145,7 @@
                           </small>
                         </a>
                       </div>
-                      <a class="text-danger" href="/dismiss/notification/<?= $notification['id'] ?>" title="Dismiss notification">
+                      <a class="text-danger" href="/delete/notifications/?id=<?= $notification['id'] ?>" title="Delete notification">
                         <i class="fas fs-4 fa-times"></i>
                       </a>
                     </li>

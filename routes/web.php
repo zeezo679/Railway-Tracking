@@ -67,6 +67,9 @@ return [
   ['POST', '/payment', [PaymentController::class, 'HandlePayment']],
 
   ['GET', '/dismiss/notification/{id}', [AdminController::class, 'dismissNotification']],
+  
+  ['GET', '/delete/notifications/{id}', [AdminController::class, 'deleteData']],
+  
 ];
 
 
