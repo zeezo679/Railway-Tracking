@@ -23,6 +23,20 @@ class AdminTables{
     return [];
   }
 
+  public function getLastRowAdded(){
+    $row = $this->db
+                ->select()
+                ->orderBy("id")
+                ->getRow();
+    return $row;
+  }
+  public function getOneRow($id){
+    $row = $this->db
+                ->select()
+                ->where("id","=",$id)
+                ->getRow();
+    return $row;
+  }
   public function retriveBookings(){
     $columns = "bookings.id AS id,
     users.id AS user_id,
@@ -72,7 +86,6 @@ class AdminTables{
           ->getRow();
           return $user;
   }
-
   public function updateData($data){
     $id = (int) $_POST["id"];
     if($this->tableName === "bookings"){

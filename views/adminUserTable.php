@@ -1,4 +1,6 @@
 <?php
+    $notifications = $_SESSION['notifications'] ?? [];
+    // print_r($_SESSION['notifications']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -119,7 +121,41 @@
                 </div>
               </a>
             </li>
-
+            <li class="nav-item dropdown">
+              <a class="nav-link text-white position-relative" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fas fa-bell fa-lg"></i>
+                <span class="position-absolute top-10 start-200 translate-middle badge rounded-pill bg-danger">
+                  <?= count($notifications) ?>
+                </span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end bg-dark text-white" aria-labelledby="notificationDropdown" style="min-width: 500px;">
+                <li class="dropdown-header text-white fw-bold">Notifications</li>
+                <li><hr class="dropdown-divider bg-secondary"></li>
+                <?php if (count($notifications) === 0) : ?>
+                  <li class="text-center">
+                    <a class="dropdown-item text-warning" href="#">
+                      <strong>No Notifications</strong>
+                    </a>
+                  </li>
+                <?php else : ?>
+                  <?php foreach ($notifications as $notification) : ?>
+                    <li class="d-flex justify-content-between align-items-start px-2 py-1">
+                      <div class="flex-grow-1 pe-2">
+                        <a class="dropdown-item text-success p-0" href="#">
+                          <small>
+                            <strong><?= $notification["title"] ?></strong><br>
+                            <span class="text-warning"><?= $notification["message"] ?></span>
+                          </small>
+                        </a>
+                      </div>
+                      <a class="text-danger" href="/dismiss/notification/<?= $notification['id'] ?>" title="Dismiss notification">
+                        <i class="fas fs-4 fa-times"></i>
+                      </a>
+                    </li>
+                  <?php endforeach; ?>
+                <?php endif; ?>
+              </ul>
+            </li>
           </ul>
         </div>
       </div>
