@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +14,9 @@
 </head>
 <body>
 
-<table class="table-content table-hover align-middle">
+
+  <form action="/payment" method="POST">
+  <table class="table-content table-hover align-middle">
   <thead class="table-dark">
     <tr>
       <th>Select</th>
@@ -77,7 +77,8 @@
   <div class="total" id="total-cost">$0.00</div>
 
   <div class="footer-text">Ready for Take Off?</div>
-  <button class="book-btn">Confirm & Proceed to Checkout</button>
+    <button class="book-btn" type="submit">Confirm & Proceed to Checkout</button>
+  </form>
 </div>
 
 <script src="/assets/js/select_train.js"></script>

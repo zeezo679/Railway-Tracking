@@ -32,6 +32,15 @@ class Train
         $stmt->close();
         return $trains;
     }
+
+    public static function Find($trainId)
+    {
+        $db = new DB("trains");
+        $train = $db->select()
+        ->where("id","=",$trainId)
+        ->getRow();
+        return $train;
+    }
 }
 ?>
 

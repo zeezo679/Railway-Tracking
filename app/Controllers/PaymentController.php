@@ -13,6 +13,25 @@ class PaymentController extends AbstractContoller
     {
         return $this->render('payment');
     }
+
+    public function HandlePayment()
+    {
+        //get train id
+        //find the train with that id
+
+        $trainId = $_POST['train_id'];
+        $train = Train::Find($trainId);
+
+        if (!$train) {
+            return $this->render('payment', ['error' => 'Train not found.']);
+        }
+        $_SESSION['selected_train_id'] = $trainId;
+
+        var_dump($_SESSION['selected_train_id']);
+        return $this->render('payment', [
+            'train' => $train
+        ]);
+    }
 }
 ?>
 

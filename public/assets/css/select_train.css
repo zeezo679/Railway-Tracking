@@ -1,98 +1,103 @@
-.table-content
-{
-    border-collapse: collapse;
-    margin: 140px auto;
-    font-size: 0.9em;
-    min-width: 480px;
+body {
+  background: linear-gradient(135deg, #141414 0%, #c8dcf0 100%);
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  color: #141414;
+  margin: 0;
+  min-height: 100vh;
 }
 
-.table-content thead tr
-{
-    background-color: #0071ce;
-    color: white;
-    text-align: left;
-    font-weight: bold;
+.table-content {
+  margin: 60px auto 24px auto;
+  min-width: 900px;
+  border-radius: 14px;
+  background: #f0f0ff;
+  box-shadow: 0 4px 24px rgba(20,20,20,0.08);
 }
 
-.table-content th,
-.table-content td
-{
-    padding: 12px 15px;
+.table-content thead tr {
+  background: #c8dcf0;
+  color: #141414;
+  font-weight: bold;
 }
 
-.table-content tbody tr
-{
-    border-bottom: 1px solid #dddddd;
+.table-content th, .table-content td {
+  padding: 16px 18px;
+  font-size: 1em;
 }
 
-.table-content tbody tr:nth-of-type(even)
-{
-    background-color: #f3f3f3;
+.table-content tbody tr:nth-of-type(even) {
+  background: #dcf0f0;
 }
 
-.table-content tbody tr:last-of-type
-{
-    border-bottom: 2px solid #0071ce;
+.table-content tbody tr {
+  transition: background 0.2s;
 }
 
+.table-content tbody tr:hover {
+  background: #c8dcf0;
+  cursor: pointer;
+}
 
 .cardPay {
-    background-color: #0071ce;
-    color: white;
-    padding: 30px;
-    border-radius: 14px;
-    width: 400px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Modern shadow */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
+  background: #fff;
+  color: #141414;
+  padding: 28px 32px 24px 32px;
+  border-radius: 14px;
+  width: 360px;
+  margin: 0 auto;
+  box-shadow: 0 2px 12px 0 rgba(20,20,20,0.10);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
 
-  .cardPay:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-  }
+.cardPay:hover {
+  box-shadow: 0 4px 18px 0 rgba(20,20,20,0.16);
+  transform: translateY(-2px);
+}
 
-  .cost-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    font-size: 16px;
-  }
+.cost-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
 
-  .divider {
-    border-top: 1px solid rgba(255,255,255,0.3);
-    margin: 20px 0;
-  }
+.divider {
+  border-top: 1px solid #c8dcf0;
+  margin: 20px 0;
+}
 
-  .total-label {
-    font-size: 14px;
-    opacity: 0.85;
-    margin-bottom: 4px;
-  }
+.total-label {
+  font-size: 14px;
+  opacity: 0.85;
+  margin-bottom: 4px;
+}
 
-  .total {
-    font-size: 30px;
-    font-weight: bold;
-  }
+.total {
+  font-size: 28px;
+  font-weight: bold;
+  color: #0071ce;
+}
 
-  .footer-text {
-    margin-top: 25px;
-    font-size: 18px;
-    font-weight: 600;
-  }
+.footer-text {
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #141414;
+}
 
-  .book-btn {
-    margin-top: 15px;
-    background-color: #00c853;
-    color: white;
-    border: none;
-    padding: 14px 0;
-    width: 100%;
-    font-size: 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
+.book-btn {
+  margin-top: 15px;
+  background-color: #0071ce;
+  color: #fff;
+  border: none;
+  padding: 14px 0;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
 
-  .book-btn:hover {
-    background-color: #00b84d;
-  }
+.book-btn:hover {
+  background-color: #005fa3;
+}

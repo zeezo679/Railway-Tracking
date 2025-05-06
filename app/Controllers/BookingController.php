@@ -31,7 +31,8 @@ class BookingController extends AbstractContoller
             
         ];
 
-        return $this->ShowSelectTrains();
+        header('Location: /selecttrains');
+        exit;
     }
 
     public function ShowSelectTrains()
@@ -49,7 +50,7 @@ class BookingController extends AbstractContoller
         
         foreach($trains as &$train)
         {
-            $train['ticket_cost'] = ($train['train_class'] === 'first') ? 45 : 30;
+            $train['ticket_cost'] = ($train['train_class'] === 'first') ? 45*$num_passengers : 30*$num_passengers;
             $train['service_cost'] = 9.00;
         }
         unset($train);

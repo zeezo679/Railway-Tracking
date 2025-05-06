@@ -59,14 +59,14 @@ return [
   ['POST','/updateBooking', [AdminController::class, 'updateData']],
 
   ['POST', '/selecttrains', [BookingController::class, 'HandleBookingForm']],
-  ['GET', '/selecttrains', [BookingController::class, 'ShowSelectTrains']],
-  
-  ['GET', '/dismiss/notification/{id}', [AdminController::class, 'dismissNotification']],
-  
+  ['GET', '/selecttrains', [BookingController::class, 'ShowSelectTrains']],  
 
   ['GET', '/book', [BookingController::class, 'ShowBooking']],
 
   ['GET', '/payment', [PaymentController::class, 'ShowPay']],
+  ['POST', '/payment', [PaymentController::class, 'HandlePayment']],
+
+  ['GET', '/dismiss/notification/{id}', [AdminController::class, 'dismissNotification']],
 ];
 
 
