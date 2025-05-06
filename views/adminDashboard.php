@@ -1,4 +1,5 @@
 <?php
+$notifications = $_SESSION['notifications'] ?? [];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -122,7 +123,6 @@
                 </div>
               </a>
             </li>
-
           </ul>
         </div>
       </div>

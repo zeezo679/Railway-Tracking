@@ -60,6 +60,9 @@ return [
 
   ['POST', '/selecttrains', [BookingController::class, 'HandleBookingForm']],
   ['GET', '/selecttrains', [BookingController::class, 'ShowSelectTrains']],
+  
+  ['GET', '/dismiss/notification/{id}', [AdminController::class, 'dismissNotification']],
+  
 
   ['GET', '/book', [BookingController::class, 'ShowBooking']],
 

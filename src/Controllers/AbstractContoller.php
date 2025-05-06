@@ -1,6 +1,7 @@
 <?php
 
 namespace Ziada\Mvc\Controllers;
+session_start();
 
 use Ziada\Mvc\Http\Request;
 use Ziada\Mvc\Http\Response;
@@ -36,7 +37,6 @@ abstract class AbstractContoller
     }
 
     public function checkUserLogin(){
-      session_start();
       if(!isset($_SESSION['user']['email'])){
         return $this->render('login',['errors'=>null,'old'=>[]]);   
       }
@@ -44,7 +44,6 @@ abstract class AbstractContoller
     }
 
     public function checkAdminLogin(){
-      session_start();
       if (!isset($_SESSION['user']['role']) || $_SESSION['user']['role'] !== "admin") {
         return $this->render('login', ['errors' => null, 'old' => []]);
     }    
