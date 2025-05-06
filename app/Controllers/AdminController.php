@@ -14,118 +14,100 @@ class AdminController extends AbstractContoller
   }
 
   public function showNotifications(){
-    if (!isset($_SESSION['notifications'])) {
     $notifTable = new AdminTables("notifications");
-    $_SESSION['notifications'] = $notifTable->retriveData();
-    }
-    $this->notifications = $_SESSION['notifications'];
+    $this->notifications= $notifTable->retriveData();
   }
-  public function createNotification($id,$table_name,$action_happened){
-    $table = new AdminTables($table_name);
-    $message="";
-    $title="";
-    $type="";
-    $is_admin_only=1;
-    if($action_happened === "Add"){
-      $type = "success"; 
-      switch ($table_name) {
-        case 'users':
-          $data =$table->getLastRowAdded();
-          $title.="New User";
-          $message.="New User Created Email : ".$data["email"] ;
-          break;
-        case 'trains':
-          $data =$table->getLastRowAdded();
-          $title.="New Train";
-          $message.="New Train Created With Number : ".$data["train_number"];
-          break;
-        case 'stations':
-          $is_admin_only=0;
-          $data =$table->getLastRowAdded();
-          $title.="New station";
-          $message.="New station Added in City : ".$data["city"];
-          break;
-        case 'bookings':
-          $title.="New Ticket";
-          $message.="New Ticket Booked ";
-          break;
-      }
-    }elseif($action_happened === "Delete"){
-      $type="info";
-      switch ($table_name) {
-        case 'users':
-          $data = $table->getOneRow($id);
-          $title.="Delete User";
-          $message.="Delete User with email : ".$data["email"];
-          break;
-        case 'trains':
-          $data = $table->getOneRow($id);
-          $is_admin_only=0;
-          $title.="Delete Train";
-          $message.="Delete train with number : ".$data["train_numebr"];
-          break;
-        case 'stations':
-          $data = $table->getOneRow($id);
-          $is_admin_only=0;
-          $title.="Delete Station";
-          $message.="Delete station with name :".$data["station_name"] ;
-          break;
-        case 'bookings':
-          $data = $table->getOneRow($id);
-          $title.="Cancel booking";
-          $message.="Cancel Ticket with user ID :".$data["user_id"];
-          break;
-      }
-    }
-    elseif($action_happened === "Update"){
-      $type="warning";
-      switch ($table_name) {
-        case 'users':
-          $data = $table->getOneRow($id);
-          $title.="Update User";
-          $message.="Update User with email : ".$data["email"];
-          break;
-        case 'trains':
-          $data = $table->getOneRow($id);
-          $is_admin_only=0;
-          $title.="Update Train";
-          $message.="Update train with number : ".$data["train_number"];
-          break;
-        case 'stations':
-          $data = $table->getOneRow($id);
-          $is_admin_only=0;
-          $title.="Update Station";
-          $message.="Delete station with name :".$data["station_name"] ;
-          break;
-        case 'bookings':
-          $data = $table->getOneRow($id);
-          $title.="Update booking";
-          $message.="Update Ticket with ID :".$data["id"];
-          break;
-      }
-    }
-    $notification = [
-      "is_admin_only"=>$is_admin_only,
-      "title"=>$title,
-      "message"=>$message,
-      "type"=>$type
-    ];
-    $notify = new AdminTables("notifications");
-    $notify->addData($notification);
-  }
-    public function dismissNotification($id){
-      if(isset($_SESSION['notifications'])){
-        foreach ($_SESSION['notifications'] as $index => $notification) {
-          if($notification['id'] == $id){
-            unset($_SESSION["notifications"][$index]);
-            $_SESSION['notifications'] = array_values($_SESSION['notifications']);
+    public function createNotification($id,$table_name,$action_happened){
+      $table = new AdminTables($table_name);
+      $message="";
+      $title="";
+      $type="";
+      $is_admin_only=1;
+      if($action_happened === "Add"){
+        $type = "success"; 
+        switch ($table_name) {
+          case 'users':
+            $data =$table->getLastRowAdded();
+            $title.="New User";
+            $message.="New User Created Email : ".$data["email"] ;
             break;
-          }
+          case 'trains':
+            $data =$table->getLastRowAdded();
+            $title.="New Train";
+            $message.="New Train Created With Number : ".$data["train_number"];
+            break;
+          case 'stations':
+            $is_admin_only=0;
+            $data =$table->getLastRowAdded();
+            $title.="New station";
+            $message.="New station Added in City : ".$data["city"];
+            break;
+          case 'bookings':
+            $title.="New Ticket";
+            $message.="New Ticket Booked ";
+            break;
+        }
+      }elseif($action_happened === "Delete"){
+        $type="info";
+        switch ($table_name) {
+          case 'users':
+            $data = $table->getOneRow($id);
+            $title.="Delete User";
+            $message.="Delete User with email : ".$data["email"];
+            break;
+          case 'trains':
+            $data = $table->getOneRow($id);
+            $is_admin_only=0;
+            $title.="Delete Train";
+            $message.="Delete train with number : ".$data["train_numebr"];
+            break;
+          case 'stations':
+            $data = $table->getOneRow($id);
+            $is_admin_only=0;
+            $title.="Delete Station";
+            $message.="Delete station with name :".$data["station_name"] ;
+            break;
+          case 'bookings':
+            $data = $table->getOneRow($id);
+            $title.="Cancel booking";
+            $message.="Cancel Ticket with user ID :".$data["user_id"];
+            break;
+        }
+      }elseif($action_happened === "Update"){
+        $type="warning";
+        switch ($table_name) {
+          case 'users':
+            $data = $table->getOneRow($id);
+            $title.="Update User";
+            $message.="Update User with email : ".$data["email"];
+            break;
+          case 'trains':
+            $data = $table->getOneRow($id);
+            $is_admin_only=0;
+            $title.="Update Train";
+            $message.="Update train with number : ".$data["train_number"];
+            break;
+          case 'stations':
+            $data = $table->getOneRow($id);
+            $is_admin_only=0;
+            $title.="Update Station";
+            $message.="Delete station with name :".$data["station_name"] ;
+            break;
+          case 'bookings':
+            $data = $table->getOneRow($id);
+            $title.="Update booking";
+            $message.="Update Ticket with ID :".$data["id"];
+            break;
         }
       }
-      // ? go to previous page
-      header("Location: ".$_SERVER['HTTP_REFERER']);
-      exit;
+      $notification = [
+        "is_admin_only"=>$is_admin_only,
+        "title"=>$title,
+        "message"=>$message,
+        "type"=>$type
+      ];
+      $notify = new AdminTables("notifications");
+      $notify->addData($notification);
     }
     public function showAdmin_UsersTable(){
       $this->defineTable("users");
@@ -133,7 +115,7 @@ class AdminController extends AbstractContoller
       $check = $this->checkAdminLogin();
       if($check === true){
           $users = $this->getData();
-          return $this->render('adminUserTable',['users' => $users]);
+          return $this->render('adminUserTable',['users' => $users,'notifications' => $this->notifications]);
         }
         return $check;
     }
@@ -143,7 +125,7 @@ class AdminController extends AbstractContoller
       $check = $this->checkAdminLogin();
       if($check === true){
           $trains = $this->getData();
-          return $this->render('adminTrainsTable',['trains' => $trains]);
+          return $this->render('adminTrainsTable',['trains' => $trains,'notifications' => $this->notifications]);
         }
         return $check;
     }
@@ -153,7 +135,7 @@ class AdminController extends AbstractContoller
       $check = $this->checkAdminLogin();
       if($check === true){
           $stations = $this->getData();
-          return $this->render('adminStationsTable',['stations' => $stations]);
+          return $this->render('adminStationsTable',['stations' => $stations,'notifications' => $this->notifications]);
         }
         return $check;
     }
@@ -163,7 +145,7 @@ class AdminController extends AbstractContoller
       $check = $this->checkAdminLogin();
       if($check === true){
           $bookings = $this->retriveBookingsData();
-          return $this->render('adminBookingTable',['bookings' => $bookings]);
+          return $this->render('adminBookingTable',['bookings' => $bookings,'notifications' => $this->notifications]);
         }
         return $check;
     }
@@ -178,13 +160,18 @@ class AdminController extends AbstractContoller
     }
     public function deleteData()
     {
+      $id = $_GET["id"] ?? NULL;
       $this->get_Table_Name_From_URL();
-      $id = $_GET['id'] ?? null;
-      if ($id) {
-          $this->createNotification($id,$this->tableName,"Delete");  
-          $this->tableObj->deleteData($id);
-          header("Location: /$this->tableName");
-          exit();
+      if ($id && $this->tableName!== "notifications") {
+        $this->createNotification($id,$this->tableName,"Delete");  
+        $this->tableObj->deleteData($id);
+        header("Location: /$this->tableName");
+        exit();
+      }elseif($this->tableName=== "notifications"){
+        $table = new AdminTables("notifications");
+        $table->deleteData($id);
+        header("Location: ".$_SERVER["HTTP_REFERER"]);
+        exit();
       }
       return $this->render('admin');
     }
