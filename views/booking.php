@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <?php include 'partials/links.php'; ?>
     <link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/stylebuilder/static/form-common.css?v=421d4e0
 "/>
 <link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/themes/CSS/5e6b428acc8c4e222d1beb91.css?v=3.3.62585&themeRevisionID=5f7ed99c2c2c7240ba580251"/>
@@ -14,9 +15,7 @@
 </head>
 <body>
 
-<style type="text/css" id="form-designer-style">
- 
-</style>
+<?php include 'partials/header.php'; ?>
 
 <form method="POST" action="/selecttrains"><input type="hidden" name="formID" value="251186963664569" /><input type="hidden" id="JWTContainer" value="" /><input type="hidden" id="cardinalOrderNumber" value="" /><input type="hidden" id="jsExecutionTracker" name="jsExecutionTracker" value="build-date-1746226345261" /><input type="hidden" id="submitSource" name="submitSource" value="unknown" /><input type="hidden" id="buildDate" name="buildDate" value="1746226345261" /><input type="hidden" name="uploadServerUrl" value="https://upload.jotform.com/upload" /><input type="hidden" name="eventObserver" value="1" />
   <div role="main" class="form-all">

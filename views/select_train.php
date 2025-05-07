@@ -10,10 +10,13 @@
         <!-- Customized Bootstrap Stylesheet -->
         <link href="/assets/template/css/bootstrap.min.css" rel="stylesheet">
         <link href="/assets/template/css/style.css" rel="stylesheet">
+        <?php include 'partials/links.php'; ?>
+
     <link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/themes/CSS/5e6b428acc8c4e222d1beb91.css?v=3.3.62585&themeRevisionID=5f7ed99c2c2c7240ba580251"/>
 </head>
 <body>
 
+<?php include 'partials/header.php'; ?>
 
   <form action="/payment" method="POST">
   <table class="table-content table-hover align-middle">
