@@ -101,6 +101,7 @@ class AdminController extends AbstractContoller
         }
       }
       $notification = [
+        "user_id"=>$id??NULL,
         "is_admin_only"=>$is_admin_only,
         "title"=>$title,
         "message"=>$message,

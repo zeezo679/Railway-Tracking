@@ -44,6 +44,18 @@ class User
       }
     }
 
+    public function getNotificationsFromDB($id){
+      $notify = $this->db
+                      ->select()
+                      ->join("notifications","id","user_id","Notify")
+                      ->where("id","=",$id,"users")
+                      ->fetchAll();
+      return $notify;
+    }
 
-    
+    public function getStationsFromDB(){
+      $table = new DB("stations");
+      $stations = $table->select()->fetchAll();
+      return $stations;
+    }
 }

@@ -1,4 +1,6 @@
 <?php
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,122 +25,220 @@
         </div>
         <!-- Spinner End -->
 
-        <?php include 'partials/header.php'; ?>
+        <!-- Topbar Start -->
+        <div class="container-fluid bg-primary px-5 d-none d-lg-block">
+            <div class="row gx-0">
+                <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
+                    <div class="d-inline-flex align-items-center" style="height: 45px;">
+                        <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-twitter fw-normal"></i></a>
+                        <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-facebook-f fw-normal"></i></a>
+                        <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-linkedin-in fw-normal"></i></a>
+                        <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i class="fab fa-instagram fw-normal"></i></a>
+                        <a class="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href=""><i class="fab fa-youtube fw-normal"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center text-lg-end">
+                    <div class="d-inline-flex align-items-center" style="height: 45px;">
+                      
+                      <div class="d-flex me-2 align-items-center text-light text-decoration-none">
+                        <!-- Circle user mail icon -->
+                        <i class="far fa-envelope fa-2x"></i>
+                        <!-- User name -->
+                        <small class="mx-1"><?php echo $_SESSION["user"]["email"]; ?></small>
+                      </div>
+                      <div class="d-flex me-2 align-items-center text-light text-decoration-none">
+                        <!-- Circle user image -->
+                        <img src="/assets/template/img/user_icon.jpg" alt="User" class="mx-3 rounded-circle me-2" width="30" height="30">
+                        <!-- User name -->
+                        <small><?php echo $_SESSION["user"]["firstName"].$_SESSION["user"]["lastName"]; ?></small>
+                      </div>
+                      <div class="d-flex me-2 align-items-center text-light text-decoration-none">
+                        <i class="fas me-1 fa-wallet text-success"></i>
+                        <small><?php echo $_SESSION["user"]["balance"]; ?></small>
+                      </div>
 
-    
-            <!-- Carousel Start -->
-            <div class="carousel-header">
-                <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-bs-target="#carouselId" data-bs-slide-to="0" class="active"></li>
-                        <li data-bs-target="#carouselId" data-bs-slide-to="1"></li>
-                        <li data-bs-target="#carouselId" data-bs-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner" role="listbox">
-                        <div class="carousel-item active">
-                            <img src="/assets/template/img/carousel-2.jpg" class="img-fluid" alt="Image">
-                            <div class="carousel-caption">
-                                <div class="p-3" style="max-width: 900px;">
-                                    <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Explore The World</h4>
-                                    <h1 class="display-2 text-capitalize text-white mb-4">Let's The World Together!</h1>
-                                    <p class="mb-5 fs-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                                    </p>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="#">Discover Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="/assets/template/img/carousel-1.jpg" class="img-fluid" alt="Image">
-                            <div class="carousel-caption">
-                                <div class="p-3" style="max-width: 900px;">
-                                    <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Explore The World</h4>
-                                    <h1 class="display-2 text-capitalize text-white mb-4">Find Your Perfect Tour At Travel</h1>
-                                    <p class="mb-5 fs-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                                    </p>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="#">Discover Now</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="/assets/template/img/carousel-3.jpg" class="img-fluid" alt="Image">
-                            <div class="carousel-caption">
-                                <div class="p-3" style="max-width: 900px;">
-                                    <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Explore The World</h4>
-                                    <h1 class="display-2 text-capitalize text-white mb-4">You Like To Go?</h1>
-                                    <p class="mb-5 fs-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                                    </p>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="#">Discover Now</a>
-                                    </div>
-                                </div>
-                            </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Topbar End -->
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-fluid position-relative p-0">
+            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+                <a href="" class="navbar-brand p-0">
+                    <h1 class="m-0"><i class="fa fa-map-marker-alt me-3"></i>Travela</h1>
+                    <!-- <img src="/assets/template/img/logo.png" alt="Logo"> -->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0">
+                        <a href="index.html" class="nav-item nav-link active">Home</a>
+                        <a href="/book" class="nav-item nav-link">Book Now   </a>
+                        <div class="dropdown">
+                          <a class="nav-link text-white position-relative" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="me-1">Notifications </span><i class="fas fa-bell fa-lg"></i>
+                            <span class="position-absolute top-10 start-200 translate-middle badge rounded-pill bg-warning">
+                              <?= count($notifications) ?>
+                            </span>
+                          </a>
+                          <ul class="dropdown-menu dropdown-menu-end bg-dark text-white" aria-labelledby="notificationDropdown" style="min-width: 500px;">
+                            <li class="dropdown-header text-white fw-bold">Notifications</li>
+                            <li><hr class="dropdown-divider bg-secondary"></li>
+                            <?php if (count($notifications) === 0) : ?>
+                              <li class="text-center">
+                                <a class="dropdown-item text-warning" href="#">
+                                  <strong>No Notifications</strong>
+                                </a>
+                              </li>
+                            <?php else : ?>
+                              <?php foreach ($notifications as $notification) : ?>
+                                <li class="d-flex justify-content-between align-items-start px-2 py-1">
+                                  <div class="flex-grow-1 pe-2">
+                                    <a class="dropdown-item text-success p-0" href="#">
+                                      <small>
+                                        <strong><?= $notification["title"] ?></strong><br>
+                                        <span class="text-warning"><?= $notification["message"] ?></span>
+                                      </small>
+                                    </a>
+                                  </div>
+                                  <a class="text-danger" href="/delete/notifications/?id=<?= $notification['id'] ?>" title="Delete notification">
+                                    <i class="fas fs-4 fa-times"></i>
+                                  </a>
+                                </li>
+                              <?php endforeach; ?>
+                            <?php endif; ?>
+                          </ul>
                         </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon btn bg-primary" aria-hidden="false"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
-                        <span class="carousel-control-next-icon btn bg-primary" aria-hidden="false"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+                    <a href="/logout" class="btn btn-danger rounded-pill py-2 px-4 ms-lg-4">Log Out</a>
                 </div>
-            </div>
+            </nav>
+
+            <!-- Carousel Start -->
+            <div class="carousel-header">
+              <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
+                  <ol class="carousel-indicators">
+                      <li data-bs-target="#carouselId" data-bs-slide-to="0" class="active"></li>
+                      <li data-bs-target="#carouselId" data-bs-slide-to="1"></li>
+                      <li data-bs-target="#carouselId" data-bs-slide-to="2"></li>
+                  </ol>
+                  <div class="carousel-inner" role="listbox">
+                      <div class="carousel-item active">
+                          <img src="https://www.wallpaperflare.com/static/633/768/877/train-blue-brown-wallpaper.jpg" class="img-fluid" alt="High-Speed Train">
+                          <div class="carousel-caption">
+                              <div class="p-3" style="max-width: 900px;">
+                                  <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Book Tickets Fast</h4>
+                                  <h1 class="display-2 text-capitalize text-white mb-4">Your Journey Starts Here</h1>
+                                  <p class="mb-5 fs-5">Find and book train tickets in seconds. Travel quickly, comfortably, and affordably with our platform.</p>
+                                  <div class="d-flex align-items-center justify-content-center">
+                                      <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="/book">Book Now</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="carousel-item">
+                          <img src="https://img.freepik.com/premium-photo/picture-inside-train-with-blue-seats_875722-10504.jpg" class="img-fluid" alt="Comfortable Train Seat">
+                          <div class="carousel-caption">
+                              <div class="p-3" style="max-width: 900px;">
+                                  <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Comfort & Safety</h4>
+                                  <h1 class="display-2 text-capitalize text-white mb-4">Travel In Style & Comfort</h1>
+                                  <p class="mb-5 fs-5">Modern trains with top-class comfort and safety features. Choose your seat and travel stress-free.</p>
+                                  <div class="d-flex align-items-center justify-content-center">
+                                      <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="/features">See Features</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="carousel-item">
+                          <img src="https://img.freepik.com/premium-photo/captured-long-exposure-solitary-young-man-subway-station-blurred-train-pedestrians-motion_157027-2142.jpg" class="img-fluid" alt="Online Booking Platform">
+                          <div class="carousel-caption">
+                              <div class="p-3" style="max-width: 900px;">
+                                  <h4 class="text-white text-uppercase fw-bold mb-4" style="letter-spacing: 3px;">Smart Booking</h4>
+                                  <h1 class="display-2 text-capitalize text-white mb-4">Plan Your Trip Online</h1>
+                                  <p class="mb-5 fs-5">Use our intuitive platform to search schedules, compare prices, and manage your bookings all in one place.</p>
+                                  <div class="d-flex align-items-center justify-content-center">
+                                      <a class="btn-hover-bg btn btn-primary rounded-pill text-white py-3 px-5" href="/login">Get Started</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon btn bg-primary" aria-hidden="false"></span>
+                      <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
+                      <span class="carousel-control-next-icon btn bg-primary" aria-hidden="false"></span>
+                      <span class="visually-hidden">Next</span>
+                  </button>
+              </div>
+
+
             <!-- Carousel End -->
-        </div>
-        <div class="container-fluid search-bar position-relative" style="top: -50%; transform: translateY(-50%);">
-            <div class="container">
-                <div class="position-relative rounded-pill w-100 mx-auto p-5" style="background: rgba(19, 53, 123, 0.8);">
-                    <input class="form-control border-0 rounded-pill w-100 py-3 ps-4 pe-5" type="text" placeholder="Eg: Thailand">
-                    <button type="button" class="btn btn-primary rounded-pill py-2 px-4 position-absolute me-2" style="top: 50%; right: 46px; transform: translateY(-50%);">Search</button>
-                </div>
             </div>
-        </div>
+            <div class="container-fluid search-bar position-relative" style="top: -50%; transform: translateY(-50%);">
+    <div class="container">
+        <form method="POST" action="/home/findCity">
+            <div class="position-relative rounded-pill w-100 mx-auto p-5 text-center" style="background: rgba(19, 53, 123, 0.8);">
+                <?php if (isset($message) && $message): ?>
+                  <div class="my-3 text-center fs-3"><?= $message ?></div>
+                <?php endif; ?>
+                <input class="form-control border-0 rounded-pill w-100 py-3 ps-4 pe-5" name="city" type="text" placeholder="Search Cities We Are Exist In :">
+                <button type="submit" class="btn btn-primary rounded-pill py-2 px-4 me-2 mt-2">Search</button>
+            </div>
+        </form>
+    </div>
+</div>
         <!-- Navbar & Hero End -->
 
         <!-- About Start -->
         <div class="container-fluid about py-5">
-            <div class="container py-5">
-                <div class="row g-5 align-items-center">
-                    <div class="col-lg-5">
-                        <div class="h-100" style="border: 50px solid; border-color: transparent #13357B transparent #13357B;">
-                            <img src="/assets/template/img/about-img.jpg" class="img-fluid w-100 h-100" alt="">
-                        </div>
-                    </div>
-                    <div class="col-lg-7" style="background: linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(img/about-img-1.png);">
-                        <h5 class="section-about-title pe-3">About Us</h5>
-                        <h1 class="mb-4">Welcome to <span class="text-primary">Travela</span></h1>
-                        <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, dolorum, doloribus sunt dicta, officia voluptatibus libero necessitatibus natus impedit quam ullam assumenda? Id atque iste consectetur. Commodi odit ab saepe!</p>
-                        <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium quos voluptatem suscipit neque enim, doloribus ipsum rem eos distinctio, dignissimos nisi saepe nulla? Libero numquam perferendis provident placeat molestiae quia?</p>
-                        <div class="row gy-2 gx-4 mb-4">
-                            <div class="col-sm-6">
-                                <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>First Class Flights</p>
-                            </div>
-                            <div class="col-sm-6">
-                                <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Handpicked Hotels</p>
-                            </div>
-                            <div class="col-sm-6">
-                                <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>5 Star Accommodations</p>
-                            </div>
-                            <div class="col-sm-6">
-                                <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Latest Model Vehicles</p>
-                            </div>
-                            <div class="col-sm-6">
-                                <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>150 Premium City Tours</p>
-                            </div>
-                            <div class="col-sm-6">
-                                <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>24/7 Service</p>
-                            </div>
-                        </div>
-                        <a class="btn btn-primary rounded-pill py-3 px-5 mt-2" href="">Read More</a>
-                    </div>
+    <div class="container py-5">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-5">
+                <div class="h-100" style="border: 50px solid; border-color: transparent #13357B transparent #13357B;">
+                    <img src="/assets/template/img/about-img.jpg" class="img-fluid w-100 h-100" alt="Railway Station Image">
                 </div>
             </div>
+            <div class="col-lg-7" style="background: linear-gradient(rgba(255, 255, 255, .8), rgba(255, 255, 255, .8)), url(img/about-img-1.png);">
+                <h5 class="section-about-title pe-3">About Our System</h5>
+                <h1 class="mb-4">Welcome to <span class="text-primary">Railway Tracker</span></h1>
+                <p class="mb-4">
+                    Our Railway Tracking System is designed to make your journey easier, smarter, and more connected. Whether you're planning a trip, searching for the nearest station, or checking availability, our platform gives you everything you need in one place.
+                </p>
+                <p class="mb-4">
+                    Built with modern web technologies, this system provides real-time data, secure access, and an intuitive interface so that passengers can easily navigate, track, and manage their travel plans without hassle.
+                </p>
+                <div class="row gy-2 gx-4 mb-4">
+                    <div class="col-sm-6">
+                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Search Nearby Stations</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Live Train Tracking</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Smart Booking System</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>User-Friendly Interface</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Secure & Fast Access</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>24/7 Support</p>
+                    </div>
+                </div>
+                <a class="btn btn-primary rounded-pill py-3 px-5 mt-2" href="#services">Explore More</a>
+            </div>
         </div>
+    </div>
+</div>
+
         <!-- About End -->
 
         <!-- Services Start -->

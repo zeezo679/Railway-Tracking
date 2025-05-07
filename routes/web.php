@@ -11,12 +11,14 @@ use App\Controllers\BookingController;
 use App\Controllers\PaymentController;
 use App\Controllers\Render;
 use App\Controllers\ResetPasswordController;
+use App\Controllers\UserController;
 
 return [
   // ? GET from url normal navigate
   // ? POST from forms
   ['GET', '/', [LoginController::class, 'showLogin']],
-  ['GET', '/home', [Render::class, 'index']],
+  ['GET', '/home', [UserController::class, 'index']],
+  ['POST', '/home/findCity', [UserController::class, 'findCity']],
   
   ['GET', '/login', [LoginController::class, 'showLogin']],
   ['POST','/login', [LoginController::class, 'loginAction']],  
