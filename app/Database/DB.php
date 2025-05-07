@@ -17,7 +17,7 @@ interface dbContract{
 class DB implements dbContract{
   private $table;
   private $sql;
-  private $conn;
+  public $conn;
   
   public function __construct($table){
     $this->table=$table;

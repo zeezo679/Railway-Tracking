@@ -38,36 +38,20 @@ class AdminTables{
     return $row;
   }
   public function retriveBookings(){
-    $columns = "bookings.id AS id,
-    users.id AS user_id,
-    users.firstName AS firstName,
-    users.email AS user_email,
-    trains.id AS train_id,
-    trains.train_name AS train_name,
-    trains.train_number,
-    departure_station.station_name AS departure_station,
-    arrival_station.station_name AS arrival_station,
-    bookings.travel_date,
-    bookings.platform_number,
-    trains.departure_time,
-    trains.arrival_time,
-    bookings.seat_number,
-    bookings.class,
-    bookings.status"; 
-    try{
-      $data = $this->db
-              ->select($columns)
-              ->join("users","user_id","id")
-              ->join("trains","train_id","id")
-              ->join("stations","departure_station_id","id","departure_station")
-              ->join("stations","arrival_station_id","id","arrival_station")
-              ->orderBy("id")
-              ->fetchAll();
-              return $data;
-    }catch(\Exception $e){
-      echo "Error : ".$e;
+    $columns = "id, user_id, firstName, ticketCode, user_email, train_id, train_name, seat_number,
+                departure_station, arrival_station, travel_date, class, status, platform_number, departure_time, arrival_time";
+
+    try {
+        $data = $this->db
+            ->select($columns)
+            ->orderBy("id")
+            ->fetchAll();
+
+        return $data;
+    } catch (\Exception $e) {
+        echo "Error: " . $e->getMessage();
+        return [];
     }
-    return [];
   }
   public function deleteData($id){
     try{
