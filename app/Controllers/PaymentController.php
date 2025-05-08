@@ -2,11 +2,8 @@
 namespace App\Controllers;
 
 use App\Models\Booking;
-use App\Models\Station;
 use App\Models\Train;
 use Ziada\Mvc\Controllers\AbstractContoller;
-use App\Models\User;
-use Ziada\Mvc\Http\Response;
 use DateTime;
 
 class PaymentController extends AbstractContoller
@@ -68,7 +65,7 @@ class PaymentController extends AbstractContoller
         'seat_number' => $seatNumber,
         'departure_station' => $train['departure_station'],
         'arrival_station' => $train['arrival_station'],
-        'travel_date' =>(new DateTime($train['departure_time']))->format('m/d/Y'),
+        'travel_date' =>(new DateTime($train['departure_time']))->format('Y-m-d'),
         'class' => $train['train_class'],
         'status' => 'pending',
         'platform_number' => $platNum,
@@ -111,6 +108,8 @@ class PaymentController extends AbstractContoller
     {
         return random_int(1,200);
     }
+
+    
 }
 ?>
 

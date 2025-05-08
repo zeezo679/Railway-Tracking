@@ -12,7 +12,6 @@ class UserController extends AdminController
     public function __construct(){
       $this->userModel = new User();
     }
-
     public function index()
     {
       $check = $this->checkUserLogin(); 

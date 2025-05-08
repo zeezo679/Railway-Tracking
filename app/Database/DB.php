@@ -102,7 +102,7 @@ class DB implements dbContract{
     return $this;
   }
   public function excute(){
-    echo "<br/>".$this->sql."<br/>";
+    // echo "<br/>".$this->sql."<br/>";
     if(!mysqli_query($this->conn,$this->sql)){
       die("Failed to excute the query" . mysqli_error($this->conn));
     };

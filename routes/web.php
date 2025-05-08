@@ -71,6 +71,7 @@ return [
   ['GET', '/dismiss/notification/{id}', [AdminController::class, 'dismissNotification']],
   
   ['GET', '/delete/notifications/{id}', [AdminController::class, 'deleteData']],
+  ['GET', '/tracking-train', [PaymentController::class, 'showTrackingTrain']],
   ['POST', '/confirm', [PaymentController::class, 'HandlePaymentConfirmation']],
 ];
 
