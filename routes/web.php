@@ -12,6 +12,7 @@ use App\Controllers\PaymentController;
 use App\Controllers\Render;
 use App\Controllers\ResetPasswordController;
 use App\Controllers\UserController;
+use App\Controllers\TrackingController;
 
 return [
   // ? GET from url normal navigate
@@ -73,6 +74,9 @@ return [
   ['GET', '/delete/notifications/{id}', [AdminController::class, 'deleteData']],
   ['GET', '/tracking-train', [PaymentController::class, 'showTrackingTrain']],
   ['POST', '/confirm', [PaymentController::class, 'HandlePaymentConfirmation']],
+  ['GET', '/confirm', [PaymentController::class, 'HandlePaymentConfirmation']],
+
+  ['GET', '/tracking', [TrackingController::class, 'ShowTrackingPage']],
 ];
 
 

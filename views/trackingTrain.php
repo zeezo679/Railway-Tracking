@@ -1,5 +1,4 @@
 <?php
-// Simulated booking data (you'll replace this with actual booking data)
 $booking = [
   'train_name' => 'Train A',
   'departure_station' => 'Alexandria Railway Station',
@@ -97,6 +96,5 @@ function updateProgress(departure, arrival) {
 
 updateProgress("<?= $booking['departure_time'] ?>", "<?= $booking['arrival_time'] ?>");
 </script>
-
 </body>
 </html>

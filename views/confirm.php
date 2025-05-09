@@ -7,8 +7,10 @@
     <title>Ticket Confirmation</title>
     <link href="/assets/template/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/confirm.css">
+    <?php include 'partials/links.php'; ?>
 </head>
 <body>
+<?php include 'partials/header.php'; ?>
   <div>
     <div class="ticket-container">
       <div id="ticket" class="pt-3 ps-2 pe-2">      
@@ -65,13 +67,14 @@
             <div class="ticket-col">
               <label>Departure Time</label>
               <div class="ticket-value">
-                <?= date('h:i A', strtotime($booking['departure_time'])) ?>
+              <?= date('l, F j, Y h:i A', strtotime($booking['departure_time'])) ?>
               </div>
             </div>
             <div class="ticket-col">
               <label>Arrival Time</label>
               <div class="ticket-value">
-                <?= date('h:i A', strtotime($booking['arrival_time'])) ?>
+              <?= date('l, F j, Y h:i A', strtotime($booking['arrival_time'])) ?>
+
               </div>
             </div>
           </div>
@@ -95,7 +98,7 @@
     </div>
     <div class="ticket-actions">
         <button class="ticket-btn save">Save Ticket</button>
-        <a href="/tracking-train" class="ticket-btn cancel">Track Your Train</a>
+        <a href="/tracking" class="ticket-btn cancel">Track Your Train</a>
     </div>
   </div>
  <!-- html2canvas library -->

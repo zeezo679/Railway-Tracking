@@ -5,6 +5,7 @@ use App\Models\Booking;
 use App\Models\Train;
 use Ziada\Mvc\Controllers\AbstractContoller;
 use DateTime;
+use App\Models\Station;
 
 class PaymentController extends AbstractContoller
 {
@@ -69,8 +70,8 @@ class PaymentController extends AbstractContoller
         'class' => $train['train_class'],
         'status' => 'pending',
         'platform_number' => $platNum,
-        'departure_time' => (new DateTime($train['departure_time']))->format('H:i'),
-        'arrival_time' => (new DateTime($train['arrival_time']))->format('H:i'),
+        'departure_time' => $train['departure_time'],
+        'arrival_time' => $train['arrival_time'],
         ];
 
         $bookingId = Booking::create($bookingData);
@@ -78,6 +79,7 @@ class PaymentController extends AbstractContoller
         $booking = Booking::find($bookingId);
 
 
+        Station::importFromTrains();
         return $this->render('confirm', [
             'booking' => $booking
         ]);
@@ -108,8 +110,6 @@ class PaymentController extends AbstractContoller
     {
         return random_int(1,200);
     }
-
-    
 }
 ?>
 
