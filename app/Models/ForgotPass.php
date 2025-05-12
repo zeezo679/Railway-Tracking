@@ -4,9 +4,9 @@ namespace App\Models;
 use App\Database\DB;
 use Ziada\Mvc\Controllers\AbstractContoller;
 
-class ForgotPass extends AbstractContoller
+class ForgotPass extends AbstractContoller  //immutable class
 {
-    private $db = null;
+    private readonly DB $db;
 
     public function __construct()
     {
