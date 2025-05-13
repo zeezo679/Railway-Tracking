@@ -41,6 +41,14 @@ class Train
         ->getRow();
         return $train;
     }
+
+    public function UpdateTrainClass($trainId, $class)
+  {
+      $db = new DB('trains');
+      $db->update(['class' => $class])
+        ->where('id', '=', $trainId)
+        ->excute();
+  }
 }
 ?>
 

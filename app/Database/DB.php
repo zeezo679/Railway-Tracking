@@ -117,5 +117,10 @@ class DB implements dbContract{
     return mysqli_fetch_all($query,MYSQLI_ASSOC);
   }
 
+  public function getSql()
+  {
+      return $this->sql;
+  }
+
 }
 ?>

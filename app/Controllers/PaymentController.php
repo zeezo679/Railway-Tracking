@@ -39,7 +39,7 @@ class PaymentController extends AbstractContoller
     {
         if (isset($_SESSION['last_booking_id'])) {
             $bookingId = $_SESSION['last_booking_id'];
-            $booking = $this->bookingRepo->find($bookingId);
+            $booking = $this->bookingRepo->getBookingWithDetails($bookingId);
             return $this->render('confirm', ['booking' => $booking]);
         }
 
@@ -62,25 +62,17 @@ class PaymentController extends AbstractContoller
 
         $bookingData = [
             'user_id' => $user['id'],
-            'firstName' => $user['firstName'],
             'ticketCode' => $ticketCode,
-            'user_email' => $user['email'],
             'train_id' => $train['id'],
-            'train_name' => $train['train_name'],
             'seat_number' => $seatNumber,
-            'departure_station' => $train['departure_station'],
-            'arrival_station' => $train['arrival_station'],
             'travel_date' => (new DateTime($train['departure_time']))->format('Y-m-d'),
-            'class' => $train['train_class'],
             'status' => 'pending',
             'platform_number' => $platNum,
-            'departure_time' => $train['departure_time'],
-            'arrival_time' => $train['arrival_time'],
         ];
 
         $bookingId = $this->bookingRepo->create($bookingData);
         $_SESSION['last_booking_id'] = $bookingId;
-        $booking = $this->bookingRepo->find($bookingId);
+        $booking = $this->bookingRepo->getBookingWithDetails($bookingId);
 
         Station::importFromTrains();
 

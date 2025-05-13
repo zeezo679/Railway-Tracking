@@ -37,13 +37,17 @@ class AdminTables{
                 ->getRow();
     return $row;
   }
-  public function retriveBookings(){
-    $columns = "id, user_id, firstName, ticketCode, user_email, train_id, train_name, seat_number,
-                departure_station, arrival_station, travel_date, class, status, platform_number, departure_time, arrival_time";
+  public function retriveBookings()
+{
+    $columns = "bookings.id, bookings.user_id, bookings.ticketCode, bookings.seat_number, bookings.travel_date, bookings.status, bookings.platform_number,
+                users.firstName AS user_name, users.email AS user_email,
+                trains.id as train_id,trains.train_name, trains.departure_station, trains.arrival_station, trains.arrival_time, trains.departure_time, trains.train_class";
 
     try {
         $data = $this->db
             ->select($columns)
+            ->join('users', 'user_id', 'id')
+            ->join('trains', 'train_id', 'id')
             ->orderBy("id")
             ->fetchAll();
 
@@ -52,7 +56,8 @@ class AdminTables{
         echo "Error: " . $e->getMessage();
         return [];
     }
-  }
+}
+
   public function deleteData($id){
     try{
       $this ->db
@@ -77,7 +82,6 @@ class AdminTables{
         'seat_number',
         'platform_number',
         'travel_date',
-        'class',
         'status'
       ];
       $data = array_filter(
@@ -103,6 +107,14 @@ class AdminTables{
     }catch(\Exception $e){
       echo "Error : " . $e->getMessage();
     }
+  }
+
+  public function updateTrainClass($trainId, $class)
+  {
+      $db = new DB('trains');
+      $db->update(['class' => $class])
+        ->where('id', '=', $trainId)
+        ->excute();
   }
 }
 ?>

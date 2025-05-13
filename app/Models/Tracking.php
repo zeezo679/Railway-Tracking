@@ -10,20 +10,15 @@ class Tracking
     public function getBookingDetails($booking_id)
     {
         $db = new DB('bookings');
-        $booking = $db->select()
-        ->where('id', '=', $booking_id)
+        $booking = $db->select('bookings.train_id, trains.departure_station AS departure_station_name, trains.arrival_station AS arrival_station_name')
+        ->join('trains', 'train_id', 'id')
+        ->where('bookings.id', '=', $booking_id)
         ->getRow();
 
-        if(!$booking)
-        {
+        if (!$booking) {
             return null;
         }
 
-        return
-        [
-            'train_id' => $booking['train_id'],
-            'departure_station_name' => $booking['departure_station'],
-            'arrival_station_name' => $booking['arrival_station'],
-        ];
+        return $booking;
     }
 }

@@ -226,7 +226,7 @@
                 <div class="col-md-6">
                   <div class="mb-2">
                     <label class="form-label">User Name</label>
-                    <input type="text" readonly class="form-control" name="firstName" value="<?=$ticket["firstName"]?>">
+                    <input type="text" readonly class="form-control" name="firstName" value="<?=$ticket["user_name"]?>">
                   </div>
                   <div class="mb-2">
                     <label class="form-label">Email</label>
@@ -287,8 +287,8 @@
                   <div class="mb-2">
                     <label class="form-label">Class</label>
                     <select name="class" class="form-select">
-                      <option class="bg-dark" value="first" <?= $ticket["class"] === "first" ? "selected" : "" ?>>First Class</option>
-                      <option class="bg-dark" value="second" <?= $ticket["class"] === "second" ? "selected" : "" ?>>Second Class</option>
+                      <option class="bg-dark" value="first" <?= $ticket["train_class"] === "first" ? "selected" : "" ?>>First Class</option>
+                      <option class="bg-dark" value="second" <?= $ticket["train_class"] === "second" ? "selected" : "" ?>>Second Class</option>
                     </select>
                   </div>
                   <div class="mb-2">

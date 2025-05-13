@@ -22,7 +22,7 @@
           <div class="ticket-row">
             <div class="ticket-col">
               <label>User Name</label>
-              <div class="ticket-value"><?= htmlspecialchars($booking['firstName']) ?></div>
+              <div class="ticket-value"><?= htmlspecialchars($booking['user_name'] ?? 'N/A') ?></div>
             </div>
             <div class="ticket-col">
               <label>Train Name</label>

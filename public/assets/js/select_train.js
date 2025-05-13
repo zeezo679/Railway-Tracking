@@ -27,7 +27,7 @@ document.querySelectorAll('.table-content tbody tr').forEach(row => {
     document.querySelectorAll('.table-content tbody tr').forEach(r => r.classList.remove('selected'));
     this.classList.add('selected');
   });
-  const radio = row.querySelector('input[type="radio"]');
+  const radio = row.querySelector('input[type = "radio"]');
   if (radio) {
     radio.addEventListener('click', function(e) {
       document.querySelectorAll('.table-content tbody tr').forEach(r => r.classList.remove('selected'));

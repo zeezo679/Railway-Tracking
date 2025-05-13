@@ -100,7 +100,6 @@ class BookingController extends AbstractContoller
         ]);
     }
 
-    // New method that uses the BookingRepository to save the booking
     public function ConfirmBooking()
     {
         if (session_status() === PHP_SESSION_NONE) {
@@ -109,20 +108,12 @@ class BookingController extends AbstractContoller
 
         $bookingData = [
             'user_id' => $_SESSION['user']['id'],
-            'firstName' => $_SESSION['user']['name'],
-            'user_email' => $_SESSION['user']['email'],
             'ticketCode' => uniqid('TCKT_'),
             'train_id' => $_SESSION['booking']['train_id'] ?? 1,
-            'train_name' => $_SESSION['booking']['train_name'] ?? 'Train A',
-            'departure_station' => $_SESSION['booking']['journeyFrom'],
-            'arrival_station' => $_SESSION['booking']['journeyTo'],
             'travel_date' => $_SESSION['booking']['journeyDate'],
             'seat_number' => 'A1',
-            'class' => $_SESSION['booking']['class'],
             'status' => 'confirmed',
             'platform_number' => rand(1, 10),
-            'departure_time' => $_SESSION['booking']['departure_time'] ?? '09:00',
-            'arrival_time' => $_SESSION['booking']['arrival_time'] ?? '11:00',
         ];
 
         $bookingId = $this->bookingRepo->create($bookingData);

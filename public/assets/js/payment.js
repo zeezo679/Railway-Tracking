@@ -8,6 +8,7 @@ const card = document.getElementById('card');
 const cvvInput = document.getElementById('cvv');
 const cvvDisplay = document.getElementById('cvv-display');
 
+
 // Card Number
 cardNumberInput.addEventListener('input', function() {
   let val = this.value.replace(/\D/g, '').substring(0,16);

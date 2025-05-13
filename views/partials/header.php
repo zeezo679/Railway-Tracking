@@ -61,8 +61,6 @@ $user = $_SESSION["user"] ?? [
                     <div class="navbar-nav ms-auto py-0">
                         <a href="/home" class="nav-item nav-link active">Home</a>
                         <a href="/book" class="nav-item nav-link">Book Now   </a>
-                        <a href="/tracking" class="nav-item nav-link active">Track Your Train</a>
-                        <a href="/confirm" class="nav-item nav-link active">Ticket</a>
                         <div class="dropdown">
                           <a class="nav-link text-white position-relative" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <span class="me-1">Notifications </span><i class="fas fa-bell fa-lg"></i>
